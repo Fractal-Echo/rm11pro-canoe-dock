@@ -30,3 +30,9 @@ Current warning:
 - Do not flash the original failed image again.
 - Keep stock `recovery_a` rollback available before any recovery test.
 - Keep recovery WIP until UI, touch, ADB, mount/decryption behavior, and reboot-to-system pass.
+
+Detailed evidence:
+
+- [OrangeFox port notes](orangefox-port/README.md)
+- [Recovery image forensics](orangefox-port/rm11-orangefox-image-format-forensics-2026-06-07.md)
+- [AVBTEST1 comparison](orangefox-port/rm11-orangefox-avbtest1-image-format-comparison-2026-06-07.md)

@@ -1,0 +1,27 @@
+# ADB
+ro.adb.secure=0
+ro.boot.dynamic_partitions=true
+
+# NX809J stock Android 16 identity
+ro.product.first_api_level=36
+ro.board.first_api_level=202504
+ro.board.api_level=202504
+ro.board.api_frozen=true
+ro.product.board=canoe
+ro.board.platform=canoe
+
+# Graphics
+ro.hardware.vulkan=adreno
+ro.hardware.egl=adreno
+
+# Gatekeeper
+vendor.gatekeeper.disable_spu=true
+vendor.gatekeeper.is_security_level_spu=0
+
+# Battery Property
+ro.charger.enable_suspend=1
+
+# USB
+vendor.usb.configfs=1
+vendor.usb.rps_mask=0
+vendor.usb.uvc.function.init=1

@@ -38,6 +38,14 @@ You are modifying Qualcomm boot-chain security. A wrong partition, wrong model, 
 4. Disable OTA before going online: [OTA Disable](docs/03-ota-disable.md).
 5. Back up critical partitions: [Backups And Privacy](docs/04-backups-and-privacy.md).
 
+## Project Notes
+
+Merged RM11 working notes live in [Project Notes](docs/project-notes/README.md). These are categorized maintainer notes for kernel building, recovery, GSI/ROM work, rooting, KernelSU/SuSFS, module testing, decryption, debloat/deodex, APK tooling, assets, and kernel-lab provenance.
+
+OrangeFox RM10 Pro to RM11 Pro port evidence lives in [OrangeFox Port Notes](docs/orangefox-port/README.md). Raw recovery images, logs, and headers stay local under `/home/richtofen/android/repositories/Main Assets/recovery-forensics` and are summarized in tracked docs.
+
+The curated OrangeFox device-tree source snapshot lives in [ports/orangefox-recovery](ports/orangefox-recovery/README.md).
+
 ## Release Policy
 
 No artifact gets a stable label unless it has:
@@ -57,7 +65,7 @@ No artifact gets a stable label unless it has:
 ## Known Release Lanes
 
 - AnyKernel3 OP-WILD KSU/SUSFS: [validated test build](releases/anykernel/rm11pro-android16-6.12.23-opwild-ksun-susfs/README.md).
-- OrangeFox recovery: [WIP only](releases/recovery/orangefox/README.md).
+- OrangeFox recovery: [WIP only](releases/recovery/orangefox/README.md), with port evidence in [OrangeFox Port Notes](docs/orangefox-port/README.md).
 - GSI/ROM reports: [reports only unless individually validated](releases/gsi-roms/README.md).
 - Modules and tools: [optional and device-specific](releases/modules/README.md).
 
@@ -69,5 +77,6 @@ Canoe Dock consolidates RM11 Pro public release documentation from:
 - The RM11 AnyKernel3 KernelSU-Next/SUSFS validation workspace.
 - The RM11 OrangeFox recovery build and forensic evidence.
 - The RM11 source-kernel lab, when evidence from that lab becomes release-relevant.
+- Kernel lab source lineage includes [Coding-BR/android_kernel_nubia_sm8850_qwjujube](https://github.com/Coding-BR/android_kernel_nubia_sm8850_qwjujube), referenced as provenance rather than vendored into this dock.
 
 Credits are tracked in [Project Lineage And Credits](docs/18-credits.md).

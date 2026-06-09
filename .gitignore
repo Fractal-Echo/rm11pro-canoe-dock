@@ -17,6 +17,8 @@
 *.apex
 *.so
 *.ko
+*.pem
+*.key
 
 # Local working folders.
 work/
@@ -25,3 +27,26 @@ private/
 backups/
 payloads/
 artifacts/
+
+# Local OrangeFox forensic payloads. Keep summaries in docs/orangefox-port.
+recovery-forensics/**
+!recovery-forensics/
+!recovery-forensics/README.md
+
+# OrangeFox source snapshots should not absorb proprietary blobs or key material.
+ports/orangefox-recovery/**/keys/
+ports/orangefox-recovery/**/security/
+ports/orangefox-recovery/**/prebuilt/kernel
+ports/orangefox-recovery/**/prebuilt/dtbo.img
+ports/orangefox-recovery/**/prebuilt/android16/dtbo.img
+ports/orangefox-recovery/**/prebuilt/system/bin/
+ports/orangefox-recovery/**/prebuilt/android16/system/bin/
+ports/orangefox-recovery/**/prebuilt/android16/system/lib64/
+ports/orangefox-recovery/**/prebuilt/android16/vendor/bin/
+ports/orangefox-recovery/**/prebuilt/android16/vendor/lib64/
+ports/orangefox-recovery/**/recovery/root/vendor/bin/
+ports/orangefox-recovery/**/recovery/root/vendor/firmware/
+ports/orangefox-recovery/**/recovery/root/system/bin/busybox
+ports/orangefox-recovery/**/recovery/root/system/bin/dhcpcd
+ports/orangefox-recovery/**/recovery/root/system/bin/wpa_cli
+ports/orangefox-recovery/**/recovery/root/odm/etc/aac_richtap.config

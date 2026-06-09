@@ -1,0 +1,6 @@
+<manifest version="9.0" type="device">
+    <!--
+        Disabled on NX809J Android 16.
+        Live onekeymint manifest is copied from prebuilt/android16/vendor/etc/vintf/manifest.
+    -->
+</manifest>

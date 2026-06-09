@@ -18,6 +18,7 @@ Project/tool credit/context:
 - SUSFS.
 - Magisk.
 - OrangeFox.
+- Coding-BR/android_kernel_nubia_sm8850_qwjujube: RM11/Nubia SM8850 kernel source lineage for local kernel-lab material.
 - Droidspaces: reference artifact path for GKI package comparison.
 - Fractal-Echo/RM11 lab work: device validation, guarded packaging, recovery forensics, and release-dock curation.
 

@@ -1,0 +1,4 @@
+# Disabled on NX809J Android 16.
+#
+# Live Android uses android.hardware.security.onekeymint-service-qti.rc,
+# copied from prebuilt/android16/vendor/etc/init.
