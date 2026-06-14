@@ -78,7 +78,7 @@ The current local candidate keeps the recovery AVB signing metadata and also rep
 - Vendor blobs and HAL services are still inherited from the RM10 tree unless explicitly replaced in `device.mk`.
 - The experimental NX809J kernel work is useful context, but this tree currently uses stock RM11 prebuilts as the baseline.
 - Recovery boot failed on the first rooted-Android `recovery_a` test image. Live Android properties, by-name links, input device names, loaded modules, and basic sysfs paths have been captured.
-- The local OrangeFox source tree now exists at `/home/richtofen/android/repositories/MainAssets/fox_14.1`; build validation passed again after the stock-fstab/minimal-init patch.
+- The local OrangeFox source tree now exists at `/home/richtofen/.android/repositories/MainAssets/fox_14.1`; build validation passed again after the stock-fstab/minimal-init patch.
 - Do not publish or retest the original failed OrangeFox image. The next eligible device-side test is the stock-fstab/minimal-init image only, and only as a cautious controlled one-slot test with stock `recovery_a` rollback ready.
 
 ## Building

@@ -7,8 +7,8 @@ Purpose: categorized notes merged into `rm11pro-canoe-dock` from the local RM11 
 The old raw local note set was archived before cleanup but is intentionally not committed to this repo because it contained large dumps, browser metadata, binaries, and local-only paths.
 
 ```text
-/home/richtofen/android/devices/RedMagic-11-Pro/output/notes-archive/rm11-notes-pre-categorize-20260608-215543.tar.gz
-/home/richtofen/android/devices/RedMagic-11-Pro/output/notes-archive/rm11-notes-pre-categorize-20260608-215543.manifest.txt
+/home/richtofen/.android/devices/RedMagic-11-Pro/output/notes-archive/rm11-notes-pre-categorize-20260608-215543.tar.gz
+/home/richtofen/.android/devices/RedMagic-11-Pro/output/notes-archive/rm11-notes-pre-categorize-20260608-215543.manifest.txt
 SHA256: 23315e6f107b32ccb370b0f8d3dd0390c677d563b9f212693415e6a8a7c62489
 ```
 
@@ -45,22 +45,28 @@ Promote only material that has:
 
 Everything else stays local in these project notes or in archived evidence.
 
-OrangeFox recovery has a dedicated evidence folder at [../orangefox-port/README.md](../orangefox-port/README.md). Raw recovery images, logs, and headers stay local under `/home/richtofen/android/repositories/MainAssets/recovery-forensics`.
+OrangeFox recovery has a dedicated evidence folder at [../orangefox-port/README.md](../orangefox-port/README.md). Raw recovery images, logs, and headers stay local under `/home/richtofen/.android/repositories/MainAssets/recovery-forensics`.
 
 ## Source Material Used
 
-- `/home/richtofen/android/devices/RedMagic-11-Pro/notes` cleaned local notes.
+- `/home/richtofen/.android/devices/RedMagic-11-Pro/notes` cleaned local notes.
 - `/mnt/e/Android/RM-11-Pro/staging-notes`.
 - `/mnt/e/Android/RM-11-Pro/BOOT`, `RECOVERY`, `KERNELS`, `MODULES`, and `Tools`.
-- `/home/richtofen/android/repositories/rm11pro-canoe-dock`.
-- `/home/richtofen/android/repositories/rm11pro-canoe-dock/ports/orangefox-recovery/device_nubia_NX809J`.
+- `/home/richtofen/.android/repositories/rm11pro-canoe-dock`.
+- `/home/richtofen/.android/repositories/rm11pro-canoe-dock/ports/orangefox-recovery/device_nubia_NX809J`.
 - Former local kernel checkout `rm11-recovery-next-from-myfork-main`, reviewed before cleanup and then deleted.
 - Upstream kernel source lineage: `https://github.com/Coding-BR/android_kernel_nubia_sm8850_qwjujube`.
 
 ## Current Repository Reality
 
-- `rm11pro-canoe-dock` is the only active top-level repo under `/home/richtofen/android/repositories`.
-- Local-only heavy assets live under `/home/richtofen/android/repositories/MainAssets`.
-- Raw recovery forensics live under `/home/richtofen/android/repositories/MainAssets/recovery-forensics`.
+- `rm11pro-canoe-dock` is the active public dock repo under `/home/richtofen/.android/repositories`.
+- Helper/tool checkouts may also live under `/home/richtofen/.android/repositories`; keep them local unless a specific artifact is promoted into the dock.
+- Local-only heavy assets live under `/home/richtofen/.android/repositories/MainAssets`.
+- Raw recovery forensics live under `/home/richtofen/.android/repositories/MainAssets/recovery-forensics`.
 - The broken local kernel checkout was deleted after the useful notes were summarized.
 - Re-clone `https://github.com/Coding-BR/android_kernel_nubia_sm8850_qwjujube` when kernel-source work resumes.
+
+Primary GitHub star lists for project research:
+
+- `RM11Pro-Canoe-Dock`: main RM11 Pro root/kernel/recovery/GSI/module lane.
+- `RM11Pro-Canoe-Dock-Droidspace`: RM11 Pro OS-container/Droidspaces lane.

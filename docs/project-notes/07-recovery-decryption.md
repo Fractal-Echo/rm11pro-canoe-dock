@@ -68,6 +68,6 @@ Do not promote:
 
 ## Source References
 
-- `/home/richtofen/android/devices/RedMagic-11-Pro/output/notes-archive/rm11-notes-pre-categorize-20260608-215543.tar.gz`
-- `/home/richtofen/android/repositories/rm11pro-canoe-dock/docs/13-custom-recovery-wip.md`
-- `/home/richtofen/android/repositories/rm11pro-canoe-dock/docs/14-orangefox-wip.md`
+- `/home/richtofen/.android/devices/RedMagic-11-Pro/output/notes-archive/rm11-notes-pre-categorize-20260608-215543.tar.gz`
+- `/home/richtofen/.android/repositories/rm11pro-canoe-dock/docs/13-custom-recovery-wip.md`
+- `/home/richtofen/.android/repositories/rm11pro-canoe-dock/docs/14-orangefox-wip.md`

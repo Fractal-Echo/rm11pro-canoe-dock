@@ -9,8 +9,8 @@ param(
     [string]$ImagePath = "C:\temp\orangefox-nx809j-stockfstab-mininit-20260609.img",
     [int64]$ExpectedBytes = 104857600,
     [string]$ExpectedSha256 = "9a3d822bbe8201321934a3e746b6c2efc6ef4c037939a858e94487fd866e2d4d",
-    [string]$UnpackBootimgPy = "/home/richtofen/android/repositories/MainAssets/fox_14.1/system/tools/mkbootimg/unpack_bootimg.py",
-    [string]$AvbtoolPy = "/home/richtofen/android/repositories/MainAssets/fox_14.1/external/avb/avbtool.py"
+    [string]$UnpackBootimgPy = "/home/richtofen/.android/repositories/MainAssets/fox_14.1/system/tools/mkbootimg/unpack_bootimg.py",
+    [string]$AvbtoolPy = "/home/richtofen/.android/repositories/MainAssets/fox_14.1/external/avb/avbtool.py"
 )
 
 Set-StrictMode -Version Latest

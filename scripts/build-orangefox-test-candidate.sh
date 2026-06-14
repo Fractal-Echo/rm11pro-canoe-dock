@@ -5,8 +5,8 @@ set -euo pipefail
 # It syncs the dock device tree into the local OrangeFox workspace and builds
 # recoveryimage. It does not flash anything.
 
-DOCK_DIR="${DOCK_DIR:-/home/richtofen/android/repositories/rm11pro-canoe-dock}"
-FOX_DIR="${FOX_DIR:-/home/richtofen/android/repositories/MainAssets/fox_14.1}"
+DOCK_DIR="${DOCK_DIR:-/home/richtofen/.android/repositories/rm11pro-canoe-dock}"
+FOX_DIR="${FOX_DIR:-/home/richtofen/.android/repositories/MainAssets/fox_14.1}"
 DEVICE_TREE="${DOCK_DIR}/ports/orangefox-recovery/device_nubia_NX809J"
 FOX_DEVICE_TREE="${FOX_DIR}/device/nubia/NX809J"
 JOBS="${JOBS:-8}"

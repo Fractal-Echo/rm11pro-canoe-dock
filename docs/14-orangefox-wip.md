@@ -26,7 +26,7 @@ Forensic finding:
 Current local test candidate:
 
 ```text
-/home/richtofen/android/repositories/MainAssets/fox_14.1/out/target/product/NX809J/OrangeFox-R12.0-Unofficial-NX809J.img
+/home/richtofen/.android/repositories/MainAssets/fox_14.1/out/target/product/NX809J/OrangeFox-R12.0-Unofficial-NX809J.img
 sha256: 9a3d822bbe8201321934a3e746b6c2efc6ef4c037939a858e94487fd866e2d4d
 size: 104857600 bytes
 ```

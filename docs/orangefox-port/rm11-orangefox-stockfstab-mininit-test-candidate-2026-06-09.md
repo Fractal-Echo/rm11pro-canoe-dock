@@ -34,7 +34,7 @@ stock `recovery_a` ramdisk:
 The artifact is intentionally not committed.
 
 ```text
-/home/richtofen/android/repositories/MainAssets/fox_14.1/out/target/product/NX809J/OrangeFox-R12.0-Unofficial-NX809J.img
+/home/richtofen/.android/repositories/MainAssets/fox_14.1/out/target/product/NX809J/OrangeFox-R12.0-Unofficial-NX809J.img
 ```
 
 Windows temp copy:
@@ -69,14 +69,14 @@ Image format:
 From WSL:
 
 ```bash
-cd /home/richtofen/android/repositories/rm11pro-canoe-dock
+cd /home/richtofen/.android/repositories/rm11pro-canoe-dock
 ./scripts/build-orangefox-test-candidate.sh --copy-windows-temp
 ```
 
 Optional clean build:
 
 ```bash
-cd /home/richtofen/android/repositories/rm11pro-canoe-dock
+cd /home/richtofen/.android/repositories/rm11pro-canoe-dock
 ./scripts/build-orangefox-test-candidate.sh --clean --copy-windows-temp
 ```
 
