@@ -8,15 +8,17 @@ Source list:
 https://github.com/stars/Fractal-Echo/lists/rm11pro-canoe-dock
 ```
 
-GitHub showed 22 repositories in `RM11Pro-Canoe-Dock`.
+GitHub API refresh also found the wider `Fractal-Echo` starred set, including
+the Droidspaces support stack that was not captured in the first narrow pass.
 
 ## Priority Order
 
 1. Recovery proof and rollback safety.
-2. Kernel/root package provenance.
-3. APK/module builds that improve device control or evidence capture.
-4. ROM/OTA extraction tooling.
-5. Droidspace/Linux-container/Windows-experience stack.
+2. Droidspace/Linux-container base proof.
+3. Kernel/root package provenance.
+4. APK/module builds that improve device control or evidence capture.
+5. ROM/OTA extraction tooling.
+6. Windows-experience stack through Winlator/Box64 after Linux proof.
 
 Do not let APK hoarding or emulator experiments jump ahead of recovery safety.
 
@@ -34,14 +36,14 @@ Local state:
   tracks `Coding-BR/android_device_zte_sm88XX-twrp`, not the `Fractal-Echo`
   fork. Fetch-only check shows it is behind upstream by 22 commits and picked up
   new workflow tags.
-- D2G OrangeFox marker proof is now local and reproducible through
-  `scripts/recovery/verify-d2g-preflash.sh`.
+- D2N is now the current OrangeFox recovery baseline. Its frozen image hash is
+  `a9c70ce885b025fc4b1618798b99bdc05b45239fa76c880415198ab26d9a5fd0`.
 - The working TWRP reference image is not present at
   `/home/richtofen/.android/repositories/MainAssets/references/TWRP-3.7.1-16devreverse.img`.
 
 Next actions:
 
-- Do not flash D2G until the one-slot test is intentional.
+- Keep D2N as the recovery baseline while operation-specific tests remain open.
 - Place the working TWRP image at the expected `MainAssets/references/` path.
 - Use `scripts/recovery/unpack-android-boot-lz4.sh` and
   `scripts/recovery/compare-recovery-ramdisks.sh` to compare TWRP against
@@ -146,6 +148,16 @@ Next actions:
 
 Useful repos:
 
+- `Fractal-Echo/Droidspaces-OSS`
+- `Fractal-Echo/Droidspaces-kernel`
+- `Fractal-Echo/Droidspaces-rootfs-KDE-builder`
+- `Fractal-Echo/Droidspaces_Kernel_patch`
+- `Fractal-Echo/busybox-droidspaces`
+- `Fractal-Echo/toybox-droidspaces`
+- `Fractal-Echo/socketd`
+- `Fractal-Echo/webui`
+- `Fractal-Echo/linuxcontainers-mirror`
+- `Fractal-Echo/mesa-for-android-container-rm11pro`
 - `Fractal-Echo/termux-app`
 - `Fractal-Echo/termux-x11`
 - `Fractal-Echo/Winlator-Ludashi-emulador-windows-acompanhar`
@@ -153,13 +165,40 @@ Useful repos:
 - `Fractal-Echo/ELFLoaderARM`
 - `Fractal-Echo/LSFG-Android`
 
-Recommended order after recovery is stable:
+Local state:
 
-1. Termux base plus Termux:X11.
-2. Input/display/audio proof on RM11.
-3. Winlator/Box64 path for Windows apps.
-4. VirtualAP only after networking rollback is clear.
-5. ELFLoaderARM/LSFG as experimental acceleration or compatibility lanes.
+- Core Droidspace repos were cloned/fetched into
+  `/home/richtofen/.android/repositories/droidspace-core` through
+  `scripts/repo/sync-droidspace-core.sh`.
+- Heavy repos were deliberately deferred:
+  - `Droidspaces-kernel`
+  - `mesa-for-android-container-rm11pro`
+  - `Winlator-Ludashi-emulador-windows-acompanhar`
+  - `droidspaces-recovery-hack-example`
+- Droidspaces Android debug APK was built and promoted locally:
+
+```text
+/home/richtofen/.android/repositories/MainAssets/APK/Droidspaces-OSS-v6.3.0-debug.apk
+size: 22524969
+sha256: 575260b1f3a31ed0c0a05e90d52b8d461306fbd7381addeb153d68b4038817a6
+package: com.droidspaces.app
+versionName: 6.3.0
+versionCode: 6300
+```
+
+Recommended order after D2N:
+
+1. Boot Android and capture kernel/root/SELinux baseline.
+2. Install Droidspaces debug APK only after the baseline capture.
+3. Run Droidspaces checker before importing rootfs payloads.
+4. Minimal rootfs first.
+5. Termux:X11 display proof.
+6. Audio proof.
+7. GPU proof.
+8. KDE rootfs.
+9. Winlator/Box64 path for Windows apps.
+10. VirtualAP only after networking rollback is clear.
+11. ELFLoaderARM/LSFG as experimental acceleration or compatibility lanes.
 
 Do not mix this with recovery flashing logs. It should become its own evidence
 folder once recovery is no longer the active blocker.
@@ -173,7 +212,9 @@ NubiaToolkit: dirty gradlew chmod; local signing key present.
 Redmagic-Control-Center: dirty gradlew chmod.
 gbl-chainload: dirty submodule/worktree marker under edk2.
 OrangeFox_sync: dirty deleted legacy files plus fox_14.1_manifest.sav.
-rm11pro-canoe-dock: current docs/scripts edits plus pre-existing releases deletions.
+rm11pro-canoe-dock: pre-existing releases deletions plus local verifier drafts.
+droidspace-core/*: clean immediately after clone/fetch; build output exists in
+  Droidspaces-OSS after debug APK build.
 ```
 
 ## Public Dock Rule

@@ -4,8 +4,12 @@
 
 1. Keep `rm11pro-canoe-dock` as the public dock, not a raw lab dump.
 2. Keep raw recovery forensics in `/home/richtofen/.android/repositories/MainAssets/recovery-forensics`; dock keeps summaries and a pointer README only.
-3. Re-clone the upstream kernel tree only when kernel-source work resumes; the broken local checkout was deleted after notes were summarized.
-4. Add an image identity table for every boot/recovery/kernel image before further testing.
+3. Treat D2N as the current OrangeFox recovery baseline, while still keeping
+   operation-specific tests separate.
+4. Re-clone or fetch heavy kernel/GPU/container trees only when their lane is
+   active.
+5. Add an image identity table for every boot/recovery/kernel image before
+   further flashing.
 
 ## Kernel
 
@@ -32,14 +36,19 @@ Classify result:
 
 ## Recovery
 
-Do not label OrangeFox usable.
+D2N is the current recovery baseline for the lab.
 
-Next recovery work, only if intentionally testing:
+Next recovery work, only if intentionally testing operations:
 
-- verify stock rollback images.
-- test AVBTEST1 cautiously.
-- record slot/hash/command/result.
-- stop if it routes to fastboot again.
+- MTP.
+- fastbootd.
+- backup/restore.
+- ZIP install.
+- image flash from UI.
+- wipe/format paths.
+- USB OTG.
+- reboot-menu behavior.
+- one-slot first for any new recovery image.
 
 ## Root/KSU
 
@@ -63,12 +72,27 @@ Turn future GSI claims into a matrix:
 - working/broken features.
 - rollback.
 
+## Droidspace / Containers
+
+Recovery is no longer the active blocker, so start with a read-only Android
+state snapshot and the Droidspaces checker before importing rootfs payloads.
+
+Order:
+
+1. Sync/fetch the small core Droidspace stack.
+2. Build/install only debug/test APKs first.
+3. Run kernel/root/SELinux checks.
+4. Test minimal rootfs before KDE.
+5. Add Termux:X11, then audio, then GPU.
+6. Defer Winlator, Mesa, VirtualAP, and recovery-boot-container experiments
+   until the base Linux lane passes.
+
 ## Public Docs
 
 Useful next doc cleanup for `rm11pro-canoe-dock`:
 
 - Add stronger kernel fork "developer research only" disclaimer.
-- Keep OrangeFox WIP warning.
+- Keep D2N baseline warning scoped to untested operations.
 - Add GSI report matrix.
 - Add module provenance rule.
-- Add recovery decryption checklist once recovery boots.
+- Add recovery operation checklist after MTP/backup/install/wipe testing.
