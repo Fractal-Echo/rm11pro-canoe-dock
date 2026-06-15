@@ -118,6 +118,36 @@ debug-signed with /home/richtofen/.android/debug.keystore
 
 This APK is an install/test artifact, not a public release artifact.
 
+Installed test state:
+
+```text
+installed: 2026-06-15 03:11:04
+package path: /data/app/~~ghw8gYWX-64MskUWFbmv2A==/com.droidspaces.app-usDPpzWHhzDs79T655nMHw==/base.apk
+package flags: DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP
+signature summary: PackageSignatures{3aecb9a version:2, signatures:[1390e72e], past signatures:[]}
+```
+
+Install log:
+
+```text
+/home/richtofen/.android/repositories/MainAssets/recovery-forensics/droidspaces-oss-v6.3.0-debug-install-20260615.log
+```
+
+Installed package capture:
+
+```text
+/home/richtofen/.android/repositories/MainAssets/recovery-forensics/droidspaces-oss-v6.3.0-debug-package-20260615.txt
+```
+
+Launchable activity:
+
+```text
+com.droidspaces.app/.MainActivity
+```
+
+The app has been installed, but first launch/checker/root prompt should be its
+own evidence step.
+
 ## Mechanism Notes
 
 Droidspaces is not just a launcher. It relies on Linux namespaces, cgroups,
@@ -255,8 +285,9 @@ Interpretation:
 - The missing cgroup/user namespace options may affect Docker/nested-container
   or stricter Droidspaces modes, but the real verdict should come from the
   Droidspaces checker before any rootfs import.
-- The next device write should be APK install only; do not import rootfs or
-  apply kernel patches until the checker output is saved.
+- APK install completed. The next action is first launch and Droidspaces checker
+  output. Do not import rootfs or apply kernel patches until the checker output
+  is saved.
 
 Useful command template:
 
