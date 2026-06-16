@@ -4,10 +4,10 @@ This folder tracks the RM10 Pro OrangeFox recovery port work that was adapted fo
 
 Source roles:
 
-- `/home/richtofen/.android/repositories/rm11pro-canoe-dock/recovery/device/zte/sm88XX`: current local fork path for the RM10 Pro to RM11 Pro OrangeFox device-tree port.
-- `/home/richtofen/.android/repositories/MainAssets/OrangeFox_sync`: small OrangeFox sync helper copied into `scripts/orangefox-sync`, with dock-owned fox_14.1 patches under `recovery/patches/fox_14.1`.
-- `/home/richtofen/.android/repositories/MainAssets/fox_14.1`: full OrangeFox/TWRP source tree. Generated `out/` artifacts were deleted during cleanup and must be rebuilt when needed. This is not copied into Git.
-- `/home/richtofen/.android/repositories/MainAssets/recovery-forensics`: local raw recovery images, logs, headers, and AVB comparisons. Raw payloads stay local; summary docs live here.
+- `<repo-root>/recovery/device/zte/sm88XX`: current local fork path for the RM10 Pro to RM11 Pro OrangeFox device-tree port.
+- `<local-build-root>/OrangeFox_sync`: small OrangeFox sync helper copied into `scripts/orangefox-sync`, with dock-owned fox_14.1 patches under `recovery/patches/fox_14.1`.
+- `<orangefox-tree>`: full OrangeFox/TWRP source tree. Generated `out/` artifacts were deleted during cleanup and must be rebuilt when needed. This is not copied into Git.
+- `<local-build-root>/recovery-forensics`: local raw recovery images, logs, headers, and AVB comparisons. Raw payloads stay local; summary docs live here.
 - `recovery/`: curated dock snapshot of the RM11 OrangeFox device-tree source/config/docs from the current fork.
 - `scripts/local-build/`: local-only OrangeFox build lane for fork owners and private workstations.
 

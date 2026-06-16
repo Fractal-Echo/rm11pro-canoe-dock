@@ -18,7 +18,7 @@ machine.
 
 - `runs-on: self-hosted`
 - public PR jobs on a private workstation
-- private local paths such as `/home/richtofen`
+- private local paths such as `<user-home>`
 - secrets or tokens for build access
 - `repo sync`, full OrangeFox/AOSP builds, kernel builds, or flashing
 - `adb`, `fastboot`, `dd`, or any device write action

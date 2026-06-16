@@ -95,7 +95,7 @@ for script in scripts/ci/verify-recovery-route1.sh scripts/local-build/build-ora
 done
 
 reject_workflow_pattern 'self-hosted' 'self-hosted runner'
-reject_workflow_pattern '/home/richtofen' 'private maintainer path'
+reject_workflow_pattern '/home/[A-Za-z0-9._-]+' 'private maintainer path'
 reject_workflow_pattern '(^|[[:space:]])repo[[:space:]]+sync([[:space:]]|$)' 'repo sync'
 reject_workflow_pattern '(^|[[:space:]])fastboot([[:space:]]|$)' 'fastboot'
 reject_workflow_pattern '(^|[[:space:]])adb([[:space:]]|$)' 'adb'

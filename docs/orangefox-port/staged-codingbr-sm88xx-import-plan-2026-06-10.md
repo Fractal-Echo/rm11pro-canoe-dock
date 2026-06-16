@@ -11,7 +11,7 @@ https://github.com/Coding-BR/android_device_zte_sm88XX-twrp
 Local reference clone:
 
 ```text
-/home/richtofen/.android/repositories/MainAssets/references/codingbr_zte_sm88xx_twrp
+<local-build-root>/references/codingbr_zte_sm88xx_twrp
 ```
 
 Reference commit inspected:
@@ -23,7 +23,7 @@ Reference commit inspected:
 Compared against:
 
 ```text
-/home/richtofen/.android/repositories/rm11pro-canoe-dock/recovery/device/zte/sm88XX
+<repo-root>/recovery/device/zte/sm88XX
 ```
 
 No build, flash, device write, commit, push, or source-tree patch was performed.

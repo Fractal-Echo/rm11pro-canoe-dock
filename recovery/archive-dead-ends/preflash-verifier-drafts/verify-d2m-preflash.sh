@@ -5,8 +5,8 @@ set -euo pipefail
 # D2M bakes in the live-proven decrypt stack:
 # qsee full D2K compat, gatekeeper/boot/keystore2 libc++ only, and TWRP keystore2.
 
-FOX_DIR="${FOX_DIR:-/home/richtofen/.android/repositories/MainAssets/fox_14.1}"
-ARTIFACT_DIR="${ARTIFACT_DIR:-/home/richtofen/.android/repositories/MainAssets/recovery-forensics/d2m-auto-decrypt-libcxx-keystore}"
+FOX_DIR="${FOX_DIR:-<orangefox-tree>}"
+ARTIFACT_DIR="${ARTIFACT_DIR:-<local-build-root>/recovery-forensics/d2m-auto-decrypt-libcxx-keystore}"
 IMAGE="${IMAGE:-${ARTIFACT_DIR}/OrangeFox-R12.0-Unofficial-NX809J-d2m-auto-decrypt-libcxx-keystore.img}"
 EXPECTED_BYTES="${EXPECTED_BYTES:-104857600}"
 EXPECTED_SHA256="${EXPECTED_SHA256:-7a08ab7aaa14d839b5642507a4608710900d054a7af9724b35a385e2d13dac3a}"
@@ -20,7 +20,7 @@ PRODUCT="orangefox_NX809J_codingbr_d2m"
 DEVICE_DIR="${FOX_DIR}/device/zte/sm88XX"
 AVBTOOL="${FOX_DIR}/external/avb/avbtool.py"
 TWRP_CPP="${FOX_DIR}/bootable/recovery/twrp.cpp"
-UNPACK_SCRIPT="${UNPACK_SCRIPT:-/home/richtofen/.android/repositories/rm11pro-canoe-dock/scripts/recovery/unpack-android-boot-lz4.sh}"
+UNPACK_SCRIPT="${UNPACK_SCRIPT:-<repo-root>/scripts/recovery/unpack-android-boot-lz4.sh}"
 UNPACK_DIR="${UNPACK_DIR:-${ARTIFACT_DIR}/verify-unpack-$(date +%Y%m%d-%H%M%S)}"
 
 fail() {

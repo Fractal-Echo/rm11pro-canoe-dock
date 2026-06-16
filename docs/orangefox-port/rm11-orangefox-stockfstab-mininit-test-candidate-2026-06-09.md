@@ -34,7 +34,7 @@ stock `recovery_a` ramdisk:
 The artifact is intentionally not committed.
 
 ```text
-/home/richtofen/.android/repositories/MainAssets/fox_14.1/out/target/product/NX809J/OrangeFox-R12.0-Unofficial-NX809J.img
+<orangefox-tree>/out/target/product/NX809J/OrangeFox-R12.0-Unofficial-NX809J.img
 ```
 
 Windows temp copy:
@@ -69,7 +69,7 @@ Image format:
 Current local-build lane:
 
 ```bash
-cd /home/richtofen/.android/repositories/rm11pro-canoe-dock
+cd <repo-root>
 ./scripts/local-build/build-orangefox-nx809j-local.sh --env scripts/local-build/env-orangefox-nx809j.local
 ```
 

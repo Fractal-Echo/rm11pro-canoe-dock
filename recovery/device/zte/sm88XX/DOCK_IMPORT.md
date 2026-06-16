@@ -4,7 +4,7 @@ This directory is a curated copy of the RM11 Pro / NX809J OrangeFox device-tree 
 
 Source:
 
-- Local repo: `/home/richtofen/.android/repositories/rm11pro-canoe-dock/recovery/device/zte/sm88XX`
+- Local repo: `<repo-root>/recovery/device/zte/sm88XX`
 - Active remote: `https://github.com/Fractal-Echo/rm11pro-canoe-dock`
 - Active subdir: `recovery/device/zte/sm88XX`
 - Former standalone remote at import: `https://github.com/Fractal-Echo/rm11pro-orangefox-recovery`

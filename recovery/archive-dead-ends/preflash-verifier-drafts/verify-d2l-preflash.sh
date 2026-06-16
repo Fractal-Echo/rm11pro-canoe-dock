@@ -5,8 +5,8 @@ set -euo pipefail
 # D2L keeps crypto enabled, preserves the D1T3 touch/UI baseline, restores the
 # TWRP-stable security core, and intentionally leaves Wi-Fi/SPSS chasing out.
 
-FOX_DIR="${FOX_DIR:-/home/richtofen/.android/repositories/MainAssets/fox_14.1}"
-ARTIFACT_DIR="${ARTIFACT_DIR:-/home/richtofen/.android/repositories/MainAssets/recovery-forensics/d2l-twrp-stable-security-core}"
+FOX_DIR="${FOX_DIR:-<orangefox-tree>}"
+ARTIFACT_DIR="${ARTIFACT_DIR:-<local-build-root>/recovery-forensics/d2l-twrp-stable-security-core}"
 IMAGE="${IMAGE:-${ARTIFACT_DIR}/OrangeFox-R12.0-Unofficial-NX809J-d2l-twrp-stable-security-core.img}"
 EXPECTED_BYTES="${EXPECTED_BYTES:-104857600}"
 EXPECTED_SHA256="${EXPECTED_SHA256:-91db95707f1fba2e6733c57ed5752d2ceff8b35b6d52aef85056642095baa081}"
@@ -18,7 +18,7 @@ PRODUCT="orangefox_NX809J_codingbr_d2l"
 DEVICE_DIR="${FOX_DIR}/device/zte/sm88XX"
 AVBTOOL="${FOX_DIR}/external/avb/avbtool.py"
 TWRP_CPP="${FOX_DIR}/bootable/recovery/twrp.cpp"
-UNPACK_SCRIPT="${UNPACK_SCRIPT:-/home/richtofen/.android/repositories/rm11pro-canoe-dock/scripts/recovery/unpack-android-boot-lz4.sh}"
+UNPACK_SCRIPT="${UNPACK_SCRIPT:-<repo-root>/scripts/recovery/unpack-android-boot-lz4.sh}"
 UNPACK_DIR="${UNPACK_DIR:-${ARTIFACT_DIR}/verify-unpack-$(date +%Y%m%d-%H%M%S)}"
 
 fail() {

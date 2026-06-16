@@ -5,8 +5,8 @@ set -euo pipefail
 # D2I intentionally keeps D2G's stable global recovery userspace and restores
 # only TWRP prepdecrypt semantics.
 
-FOX_DIR="${FOX_DIR:-/home/richtofen/.android/repositories/MainAssets/fox_14.1}"
-ARTIFACT_DIR="${ARTIFACT_DIR:-/home/richtofen/.android/repositories/MainAssets/recovery-forensics/d2i-prepdecrypt-only-probe}"
+FOX_DIR="${FOX_DIR:-<orangefox-tree>}"
+ARTIFACT_DIR="${ARTIFACT_DIR:-<local-build-root>/recovery-forensics/d2i-prepdecrypt-only-probe}"
 IMAGE="${IMAGE:-${ARTIFACT_DIR}/OrangeFox-R12.0-Unofficial-NX809J-d2i-prepdecrypt-only-probe.img}"
 EXPECTED_BYTES="${EXPECTED_BYTES:-104857600}"
 EXPECTED_SHA256="${EXPECTED_SHA256:-2a95570f2fced2fa24aa7c474e91ddb78f65379bc77df0c1027ed614b9fa570d}"
@@ -20,7 +20,7 @@ PRODUCT="orangefox_NX809J_codingbr_d2i"
 DEVICE_DIR="${FOX_DIR}/device/zte/sm88XX"
 AVBTOOL="${FOX_DIR}/external/avb/avbtool.py"
 TWRP_CPP="${FOX_DIR}/bootable/recovery/twrp.cpp"
-UNPACK_SCRIPT="${UNPACK_SCRIPT:-/home/richtofen/.android/repositories/rm11pro-canoe-dock/scripts/recovery/unpack-android-boot-lz4.sh}"
+UNPACK_SCRIPT="${UNPACK_SCRIPT:-<repo-root>/scripts/recovery/unpack-android-boot-lz4.sh}"
 UNPACK_DIR="${UNPACK_DIR:-${ARTIFACT_DIR}/verify-unpack-$(date +%Y%m%d-%H%M%S)}"
 
 fail() {

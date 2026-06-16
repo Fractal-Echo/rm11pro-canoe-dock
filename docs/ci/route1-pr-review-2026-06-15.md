@@ -2,6 +2,8 @@
 
 Date: 2026-06-15
 
+Last updated: 2026-06-16
+
 Branch: `repo-ci-route1-safe-public`
 
 ## Reviewed Commits
@@ -11,6 +13,8 @@ Branch: `repo-ci-route1-safe-public`
 - `b84297f` Add local OrangeFox build scripts
 - `bf44115` Add safe recovery verifier workflow
 - `2c0e6e8` Archive recovery dead-end candidates
+- `8e7b129` Add Route 1 PR review note
+- final hygiene pass: scrub public-facing private maintainer paths
 
 ## Workflows Added
 
@@ -27,12 +31,17 @@ All root workflows use `ubuntu-latest` and `permissions: contents: read`.
 - Checked root workflows for `secrets.`: none found.
 - Checked root workflows for `adb`, `fastboot`, `dd if=`, and flashing-style commands: none found.
 - Checked root workflows for `repo sync`: none found.
-- Checked root workflows for private `/home/richtofen` paths: none found.
+- Checked root workflows for private Linux home paths: none found.
 - Checked Route 1 verifier policy rejects self-hosted runners, private maintainer paths, repo sync, adb, fastboot, dd partition access, and GitHub secrets in root workflows.
 - Checked local OrangeFox build lane remains local-only and user-editable through `scripts/local-build/env-orangefox-nx809j.example`.
 - Checked local build script does not run `repo sync`, does not flash, does not use Actions, and refuses to overwrite unmanaged device trees unless explicitly forced.
+- Replaced public-facing private maintainer paths with placeholders such as `<repo-root>`, `<orangefox-tree>`, `<local-build-root>`, and `<user-home>`.
+- Replaced active script defaults with `$HOME`, repo-relative paths, env vars, or placeholders instead of maintainer-specific paths.
 
-Private `/home/richtofen` paths remain in historical docs and local evidence notes. They are not in root workflows, not in Actions execution paths, and are either local lab evidence references or forbidden-example text in CI policy docs.
+Tracked PR content no longer contains the literal maintainer home path. The
+literal path remains only in intentionally untouched local worktree material:
+the paused Droidspaces note and ignored setup-copy files. Those are not part of
+the Route 1 PR content.
 
 ## D2N Baseline Hashes
 
@@ -70,6 +79,13 @@ GitHub Actions on the pushed branch passed for:
 - AnyKernel3 Verify
 - APK Verify
 - Module Verify
+
+Final hygiene checks:
+
+- `git grep` found no literal maintainer home path in tracked PR content after excluding the intentionally untouched Droidspaces note and unrelated release deletion state.
+- `.github/workflows/` contains no private maintainer home path.
+- `scripts/ci/` contains no private maintainer home path.
+- D2N image and zip hashes are unchanged.
 
 ## Untouched Local Files
 
