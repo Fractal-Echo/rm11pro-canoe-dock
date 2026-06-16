@@ -58,10 +58,14 @@ jobs:
       - name: Configure swap and Git
         run: |
           set -euxo pipefail
-          sudo fallocate -l 8G /swapfile
-          sudo chmod 600 /swapfile
-          sudo mkswap /swapfile
-          sudo swapon /swapfile
+          if [ "$(free -m | awk '/^Swap:/ {print $2}')" -lt 8192 ]; then
+            sudo swapoff /mnt/orangefox-swapfile || true
+            sudo rm -f /mnt/orangefox-swapfile
+            sudo fallocate -l 8G /mnt/orangefox-swapfile
+            sudo chmod 600 /mnt/orangefox-swapfile
+            sudo mkswap /mnt/orangefox-swapfile
+            sudo swapon /mnt/orangefox-swapfile
+          fi
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           free -h
