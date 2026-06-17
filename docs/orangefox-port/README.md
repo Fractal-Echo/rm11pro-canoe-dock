@@ -14,7 +14,7 @@ Source roles:
 Current status:
 
 ```text
-build-pass / recovery_a-dd-test-fail / rollback-pass / stockfstab-mininit-candidate-built / codingbr-sm88xx-nx809j-splash-adb-pass-ui-blocked / rollback-pass / d1-nodecrypt-ui-adb-pass / d1t-d1t2-touch-fail / d1t3-basic-ui-touch-navigation-pass / d2e-boot-adb-pass-crypto-disabled / d2f-crypto-enabled-animation-stall / d2g-manual-service-probe / d2m-auto-decrypt-pass / d2n-current-recovery-baseline
+build-pass / recovery_a-dd-test-fail / rollback-pass / stockfstab-mininit-candidate-built / codingbr-sm88xx-nx809j-splash-adb-pass-ui-blocked / rollback-pass / d1-nodecrypt-ui-adb-pass / d1t-d1t2-touch-fail / d1t3-basic-ui-touch-navigation-pass / d2e-boot-adb-pass-crypto-disabled / d2f-crypto-enabled-animation-stall / d2g-manual-service-probe / d2m-auto-decrypt-pass / d2n-current-recovery-baseline / github-actions-public-build-redmagic-logo-stall
 ```
 
 High-confidence facts:
@@ -68,12 +68,21 @@ High-confidence facts:
   durable UI lock/timeout defaults, and has human-confirmed tap, scroll, and
   navigation. Its frozen image is exactly `104857600` bytes with SHA-256
   `a9c70ce885b025fc4b1618798b99bdc05b45239fa76c880415198ab26d9a5fd0`.
+- The 2026-06-17 GitHub Actions `orangefox-nx809j-latest` public build
+  compiled and published successfully, but the device-side test failed. After
+  flashing `recovery_b` and rebooting recovery, the phone stalled on the
+  REDMAGIC logo and did not expose recovery ADB or fastboot during observation.
+  This public CI artifact was built without the private Android 16 prebuilts and
+  with the public AOSP AVB test-key fallback, so it must not replace D2N as the
+  usable baseline.
 
 Safety rules:
 
 - Treat D2N as the current usable recovery baseline for the lab, with remaining
   operations still requiring targeted validation.
 - Do not retest the original failed image or pre-stock-fstab AVBTEST1 image.
+- Do not treat the GitHub Actions `orangefox-nx809j-latest` public artifact as
+  device-usable until the REDMAGIC-logo stall is corrected and retested.
 - Keep stock `recovery_a` rollback ready before any device-side recovery test.
 - Test only one recovery slot first.
 - Treat the stock-fstab/minimal-init build as the next candidate only after the expected rollback path is confirmed.

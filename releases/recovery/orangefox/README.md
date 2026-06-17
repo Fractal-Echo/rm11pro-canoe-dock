@@ -4,6 +4,11 @@ Current public prebuilt:
 
 - [D2N baseline](d2n-baseline/README.md)
 
+The generated GitHub Actions prerelease `orangefox-nx809j-latest` is currently
+build-only evidence. Its 2026-06-17 device-side test stalled on the REDMAGIC
+logo after flashing `recovery_b`; it needs correction before it is treated as a
+usable recovery artifact.
+
 D2N is the current RM11 Pro / REDMAGIC 11 Pro / NX809J recovery baseline. It
 booted to OrangeFox UI in the recovery lane and preserved the D1T3 touch/UI
 baseline. Treat it as the current baseline/release candidate, not a universal
