@@ -2,28 +2,34 @@
 
 Current public prebuilt:
 
-- [D2N baseline](d2n-baseline/README.md)
+- [OrangeFox RM11 current test](current/README.md)
 
-D2N is the current RM11 Pro / REDMAGIC 11 Pro / NX809J recovery baseline. It
-booted to OrangeFox UI in the recovery lane and preserved the D1T3 touch/UI
-baseline. Treat it as the current baseline/release candidate, not a universal
-stable guarantee.
+Fallback baseline:
+
+- [D2N baseline](d2n/README.md)
+
+`OrangeFox-RM11.zip` is the short-name current test package. It includes the RM11
+selectable theme and splash visual pass. D2N remains the functional recovery
+baseline and fallback.
 
 Committed prebuilt:
 
 ```text
-d2n-baseline/OrangeFox-R12.0-Unofficial-NX809J-d2n-auto-decrypt-ui-gatekeeper-polish.zip
+current/OrangeFox-RM11.zip
+d2n/OrangeFox-RM11-D2N.zip
 ```
 
 Hashes:
 
 ```text
-5394ee6e45417262f631c9783dc2904b5baeb2cbe9108561053b711c1ef62cab  OrangeFox-R12.0-Unofficial-NX809J-d2n-auto-decrypt-ui-gatekeeper-polish.zip
-a9c70ce885b025fc4b1618798b99bdc05b45239fa76c880415198ab26d9a5fd0  embedded recovery.img
+f2547c3ff9d43b060ba0ece1e9f497e2de0fbe0180a6eb8bdde3df01d80ce0d3  OrangeFox-RM11.zip
+b3c0cdeb3efbedf0903eced3a840523fe735ec27082c9f1f2bd826884166187f  embedded current recovery.img
+5394ee6e45417262f631c9783dc2904b5baeb2cbe9108561053b711c1ef62cab  OrangeFox-RM11-D2N.zip
+a9c70ce885b025fc4b1618798b99bdc05b45239fa76c880415198ab26d9a5fd0  embedded D2N recovery.img
 ```
 
 The raw `recovery.img` is not committed separately because it is exactly
-`104857600` bytes. The committed OrangeFox zip contains that image as
+`104857600` bytes. The committed OrangeFox zips contain that image as
 `recovery.img`.
 
 Historical failed/probe candidates remain documented in:
