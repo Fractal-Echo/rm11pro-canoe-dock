@@ -34,8 +34,10 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
 
 # Otacert
+ifneq ($(wildcard $(DEVICE_PATH)/security/releasekey.x509.pem),)
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(DEVICE_PATH)/security/releasekey
+endif
 
 # Required modules
 TWRP_REQUIRED_MODULES += \
