@@ -144,7 +144,9 @@ fi
 
 cd "$ORANGEFOX_TREE"
 # shellcheck source=/dev/null
+set +u
 source build/envsetup.sh
+set -u
 lunch "$LUNCH_TARGET"
 
 read -r -a goals <<<"$BUILD_GOALS"
