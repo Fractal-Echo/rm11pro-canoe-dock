@@ -111,7 +111,7 @@ jobs:
           cat >"$BUILD_ENV_FILE" <<EOF
           ORANGEFOX_TREE="${ORANGEFOX_TREE}"
           DEVICE_TREE_SOURCE="${GITHUB_WORKSPACE}/recovery/device/zte/sm88XX"
-          DEVICE_TREE_DEST_REL="device/zte/sm88XX"
+          DEVICE_TREE_DEST_REL="device/nubia/NX809J"
           DEVICE_TREE_MODE="copy"
           PRODUCT_CODENAME="${PRODUCT_CODENAME}"
           LUNCH_TARGET="${LUNCH_TARGET}"

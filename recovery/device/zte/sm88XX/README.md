@@ -117,10 +117,10 @@ cd ~/OrangeFox_sync
 ### Place device tree
 
 ```bash
-mkdir -p ~/fox_14.1/device/zte
+mkdir -p ~/fox_14.1/device/nubia
 git clone https://github.com/Fractal-Echo/rm11pro-canoe-dock ~/rm11pro-canoe-dock
 # Do not use --delete here; the local tree also holds untracked prebuilts and AVB test keys.
-rsync -a ~/rm11pro-canoe-dock/recovery/device/zte/sm88XX/ ~/fox_14.1/device/zte/sm88XX/
+rsync -a ~/rm11pro-canoe-dock/recovery/device/zte/sm88XX/ ~/fox_14.1/device/nubia/NX809J/
 ```
 
 The maintained dock helper for this step is:
