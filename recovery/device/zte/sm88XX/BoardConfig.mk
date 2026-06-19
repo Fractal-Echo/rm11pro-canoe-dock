@@ -48,7 +48,9 @@ BOARD_BOOT_HEADER_VERSION := 4
 BOARD_KERNEL_PAGESIZE := 4096
 TARGET_KERNEL_CLANG_COMPILE := true
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+ifneq ($(RM11_INCLUDE_ANDROID16_PREBUILTS),false)
 BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/android16/dtbo.img
+endif
 BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --pagesize $(BOARD_KERNEL_PAGESIZE)
 
@@ -83,7 +85,11 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 
 # Recovery uses a standalone AVB hash footer. This is a clearly labeled
 # validation key, not the stock/OEM recovery signing key.
+ifneq ($(wildcard device/nubia/NX809J/keys/avb-test/rm11_recovery_avb_testkey.pem),)
 BOARD_AVB_RECOVERY_KEY_PATH := device/nubia/NX809J/keys/avb-test/rm11_recovery_avb_testkey.pem
+else
+BOARD_AVB_RECOVERY_KEY_PATH := external/avb/test/data/testkey_rsa4096.pem
+endif
 BOARD_AVB_RECOVERY_ALGORITHM := SHA256_RSA4096
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX := 1
 BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 0

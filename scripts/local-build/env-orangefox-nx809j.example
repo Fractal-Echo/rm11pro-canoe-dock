@@ -5,7 +5,7 @@ ORANGEFOX_TREE="${HOME}/src/fox_14.1"
 
 # The public dock snapshot. The build script sets REPO_ROOT before sourcing this.
 DEVICE_TREE_SOURCE="${REPO_ROOT}/recovery/device/zte/sm88XX"
-DEVICE_TREE_DEST_REL="device/zte/sm88XX"
+DEVICE_TREE_DEST_REL="device/nubia/NX809J"
 
 # copy: rsync the dock tree into the OrangeFox checkout.
 # symlink: link the dock tree into the OrangeFox checkout.
