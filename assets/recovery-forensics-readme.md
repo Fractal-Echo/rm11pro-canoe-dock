@@ -1,14 +1,15 @@
 # Recovery Forensics
 
-This folder is a tracked pointer for local raw evidence from the RM11 OrangeFox recovery port.
+Raw RM11 OrangeFox recovery forensic evidence stays local-only.
 
-The raw images, unpacked ramdisks, headers, and generated payloads were moved out of the dock repo to:
+The raw images, unpacked ramdisks, headers, and generated payloads belong under
+the local build root, not in this public repo:
 
 ```text
 <local-build-root>/recovery-forensics
 ```
 
-The tracked summaries live in `docs/orangefox-port/`.
+Tracked summaries live in `docs/orangefox-port/`.
 
 Start here:
 

@@ -117,11 +117,11 @@ status: local modifications and untracked docs/keys/prebuilt/android16/
 
 | Local category | Canoe dock target |
 |---|---|
-| Kernel/KSU validated package | `docs/09-anykernel3-gki.md`, `docs/10-kernelsu-next-susfs.md`, `releases/anykernel/` |
+| Kernel/KSU validated package | `docs/09-anykernel3-gki.md`, `docs/10-kernelsu-next-susfs.md`, `assets/anykernel3-opwild-ksun-susfs-*` |
 | Magisk/root | `docs/08-root-magisk-init-boot.md`, `docs/11-magisk-to-kernelsu.md` |
-| GSI/ROM | `docs/12-gsi-rom-flow.md`, `releases/gsi-roms/` |
-| OrangeFox/recovery | `docs/13-custom-recovery-wip.md`, `docs/14-orangefox-wip.md`, `releases/recovery/` |
-| Modules/tools | `docs/15-modules-and-tools.md`, `releases/modules/` |
+| GSI/ROM | `docs/12-gsi-rom-flow.md`, `assets/gsi-roms-readme.md` |
+| OrangeFox/recovery | `docs/13-custom-recovery-wip.md`, `docs/14-orangefox-wip.md`, `assets/orangefox-*` |
+| Modules/tools | `docs/15-modules-and-tools.md`, `modules/README.md` |
 | Troubleshooting | `docs/16-troubleshooting.md` |
 | Public XDA-style guide | `docs/xda-redmagic-11-pro-access-guide.md` |
 

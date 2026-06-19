@@ -1,60 +1,19 @@
-# Sync a twrp minimal manifest, patch it for building OrangeFox, and sync the OrangeFox sources
+# OrangeFox Source Sync
 
-Dock note: the RM11 Pro patch payloads live in `recovery/patches/fox_14.1`.
-This helper is local-only. Public GitHub Actions must not run full syncs or
-full OrangeFox builds.
+This folder keeps the one source-sync helper used by the RM11 Pro / NX809J
+OrangeFox build lane.
 
-## To fetch the manifest for the first time, follow these steps: ##
-------------------------------------
+Current entrypoint:
 
-### 1. Fetch these sync tools ###
-	mkdir ~/OrangeFox_sync
-	cd ~/OrangeFox_sync
-	git clone https://gitlab.com/OrangeFox/sync.git # (or, using ssh, "git clone git@gitlab.com:OrangeFox/sync.git")
+```bash
+scripts/orangefox-sync/orangefox_sync.sh --branch 14.1 --path /absolute/path/to/fox_14.1
+```
 
-### 2. Do the syncing (this can take up to 1-2 hours, and can use up to 40GB-80GB of disk space) - below is an example, for 12.1 (amend as required for other branches) ##
-	cd ~/OrangeFox_sync/sync/
-	./orangefox_sync.sh --branch 12.1 --path ~/fox_12.1
 Notes:
-- You *MUST* supply an *ABSOLUTE* path name for the "--path" switch
-- If the sync process gets stuck, you might need to terminate it with Ctrl-C and then run the script again
-- If you want to use ssh for cloning the OrangeFox sources and vendor tree, export "USE_SSH=1" before starting, or supply "--ssh 1" on the command line
-- After the initial sync process, you must then clone your device trees, before you can build for your device
 
-## These manifest branches are supported by the orangefox_sync.sh script: ##
-----------------------------------
-	14.1
-	12.1
-
-## To update the manifest, and the recovery sources, and the vendor trees (given the example of the 12.1 branch above), follow these steps: ##
-----------------------------------
-	cd ~/fox_12.1/
-	repo sync # (ignore all errors and suggestions relating to "android_bootable_recovery")
-	cd ~/fox_12.1/bootable/recovery/
-	git pull
-	cd ~/fox_12.1/vendor/recovery/
-	git pull
-
-## To update only the recovery sources (given the example of the 12.1 branch above), follow these steps: ##
-----------------------------------
-	cd ~/fox_12.1/bootable/recovery/
-	git pull
-
-## To update only the vendor tree (given the example of the 12.1 branch above) follow these steps: ##
-----------------------------------
-	cd ~/fox_12.1/vendor/recovery/
-	git pull
-
-## To update only the manifest (given the example of the 12.1 branch above), follow these steps: ##
-----------------------------------
-	cd ~/fox_12.1/
-	repo sync # (ignore all errors and suggestions relating to "android_bootable_recovery")
-
-## To see the syntax of the orangefox_sync.sh script, follow these steps: ##
-----------------------------------
-	cd ~/OrangeFox_sync/sync/
-	./orangefox_sync.sh --help
-
-
-# For instructions on building OrangeFox, see:
-"https://wiki.orangefox.tech/en/dev/building"
+- `--path` must be an absolute path.
+- The active branch for this port is `14.1`.
+- RM11 Pro patch payloads live in `recovery/patches/fox_14.1`.
+- The local build wrapper is `scripts/local-build/build-orangefox-nx809j-local.sh`.
+- GitHub PR/push validation does not run a full source sync. The full build lane
+  is manual-only in `.github/workflows/orangefox-recovery-build.yml`.

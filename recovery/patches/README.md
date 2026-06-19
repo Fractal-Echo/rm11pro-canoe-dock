@@ -1,6 +1,6 @@
 # Recovery Patches
 
-Patch sets for the local OrangeFox/TWRP source tree live here.
+Patch sets for the local OrangeFox source tree live here.
 
 Current lane:
 

@@ -75,7 +75,8 @@ Local recovery assets found:
 Repo note:
 
 - Raw recovery images, logs, and headers now live under `<local-build-root>/recovery-forensics`.
-- `rm11pro-canoe-dock/recovery-forensics/` is only a tracked pointer folder.
+- `assets/recovery-forensics-readme.md` is the public pointer for local raw
+  recovery forensics.
 - Tracked OrangeFox summaries now live in [../orangefox-port/README.md](../orangefox-port/README.md).
 
 ## Source References
@@ -84,4 +85,4 @@ Repo note:
 - `/mnt/e/Android/RM-11-Pro/staging-notes/X1_FUTURE_ROM_RECOVERY_RUNWAY.md`
 - `<repo-root>/docs/13-custom-recovery-wip.md`
 - `<repo-root>/docs/14-orangefox-wip.md`
-- `<repo-root>/recovery/device/zte/sm88XX/docs/`
+- `<repo-root>/docs/orangefox-port/`

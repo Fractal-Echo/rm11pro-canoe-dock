@@ -24,3 +24,19 @@ High-level flow:
 8. Make a second backup after unlock.
 
 If the phone can boot Android and ADB works, avoid blind EDL-first paths.
+
+## RM11 Pro Full-Fastboot ABL
+
+`assets/abl_unlock.elf` is intentionally tracked as the RM11 Pro / NX809J ABL
+artifact used with ZTE Toolbox to expose full fastboot access. It is a
+boot-chain file, not a generic payload drop.
+
+Recorded hash:
+
+```text
+ad3d55fb8939a88c1304ae826db200c6fbeca70229f729d80dec269924d0c9b5  abl_unlock.elf
+```
+
+Use it only for RM11 Pro / NX809J after confirming the active slot and keeping a
+stock rollback path. With ZTE Toolbox, use option `12` and target only `abl_a`
+or `abl_b`.

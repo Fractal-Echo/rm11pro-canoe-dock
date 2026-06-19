@@ -26,31 +26,25 @@ Do not let APK hoarding or emulator experiments jump ahead of recovery safety.
 
 High priority:
 
-- `Fractal-Echo/android_device_zte_sm88XX-twrp`
-- `Fractal-Echo/RM11Pro-SM8850-LineageOS`
 - `Fractal-Echo/rm11pro-canoe-dock`
+- `Fractal-Echo/RM11Pro-SM8850-LineageOS`
 
 Local state:
 
-- `<local-build-root>/references/codingbr_zte_sm88xx_twrp`
-  tracks `Coding-BR/android_device_zte_sm88XX-twrp`, not the `Fractal-Echo`
-  fork. Fetch-only check shows it is behind upstream by 22 commits and picked up
-  new workflow tags.
-- D2N is now the current OrangeFox recovery baseline. Its frozen image hash is
+- The public dock now carries the active NX809J OrangeFox device-tree snapshot
+  and GitHub validation/build plumbing directly.
+- D2N remains retained rollback/build evidence. Its frozen image hash is
   `a9c70ce885b025fc4b1618798b99bdc05b45239fa76c880415198ab26d9a5fd0`.
-- The working TWRP reference image is not present at
-  `<local-build-root>/references/TWRP-3.7.1-16devreverse.img`.
+- Old TWRP reference trees, D2G/D2N preflash verifier scripts, dead-end
+  candidate diffs, and ramdisk comparison helpers were removed from the public
+  dock. Keep that archaeology local if it is still useful for lab work.
 
 Next actions:
 
-- Keep D2N as the recovery baseline while operation-specific tests remain open.
-- Place the working TWRP image at the expected `MainAssets/references/` path.
-- Use `scripts/recovery/unpack-android-boot-lz4.sh` and
-  `scripts/recovery/compare-recovery-ramdisks.sh` to compare TWRP against
-  OrangeFox before copying any Wi-Fi/decrypt files.
-- Decide whether the local reference should track the Coding-BR upstream or the
-  `Fractal-Echo/android_device_zte_sm88XX-twrp` fork before merging the 22
-  incoming commits.
+- Keep the public repo focused on the current `orangefox_NX809J-ap2a-eng`
+  build lane, safety notes, hashes, and rollback notes.
+- Do not reintroduce RM10/Coding-BR/TWRP reference trees unless a specific file
+  is independently validated for NX809J and becomes part of the active build.
 
 ## Kernel And Root Lane
 
@@ -79,10 +73,9 @@ Next actions:
 - Keep kernel zips, boot images, and module payloads in `MainAssets`, not in the
   public dock.
 - Promote only README/provenance/hash/rollback docs into the dock.
-- Reconcile the dock `releases/anykernel/...` deletion before any release
-  cleanup. The public docs appear to have been copied under local
-  `canoe-dock-setup-files/`, but that folder is now intentionally ignored as a
-  payload staging area.
+- Keep public release notes flat under `assets/` so users do not have to chase
+  nested lane paths. The local `canoe-dock-setup-files/` folder is intentionally
+  ignored as a payload staging area.
 
 ## APK And Module Lane
 

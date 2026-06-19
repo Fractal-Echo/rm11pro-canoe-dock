@@ -34,8 +34,10 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.fuse.passthrough.enable=true
 
 # Otacert
+ifneq ($(wildcard $(DEVICE_PATH)/security/releasekey.x509.pem),)
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(DEVICE_PATH)/security/releasekey
+endif
 
 # Required modules
 TWRP_REQUIRED_MODULES += \
@@ -50,7 +52,10 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/recovery.fstab:$(TARGET_COPY_OUT_RECOVERY)/root/system/etc/recovery.fstab \
     $(DEVICE_PATH)/recovery.fstab:$(TARGET_VENDOR_RAMDISK_OUT)/first_stage_ramdisk/fstab.qcom \
     $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/vintf/manifest.xml \
-    $(DEVICE_PATH)/recovery/root/lib/modules/modules.blocklist:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.blocklist \
+    $(DEVICE_PATH)/recovery/root/lib/modules/modules.blocklist:$(TARGET_COPY_OUT_RECOVERY)/root/lib/modules/modules.blocklist
+
+ifneq ($(RM11_INCLUDE_ANDROID16_PREBUILTS),false)
+PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/prebuilt/android16/system/bin/keystore2:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/keystore2 \
     $(DEVICE_PATH)/prebuilt/android16/system/lib64/libkeystore2_aaid.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore2_aaid.so \
     $(DEVICE_PATH)/prebuilt/android16/system/lib64/libkeystore2_apc_compat.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeystore2_apc_compat.so \
@@ -99,6 +104,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/prebuilt/android16/vendor/lib64/hw/libqtigatekeeper.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/hw/libqtigatekeeper.so \
     $(DEVICE_PATH)/prebuilt/android16/vendor/lib64/hw/libspuqtigatekeeper.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/hw/libspuqtigatekeeper.so \
     $(DEVICE_PATH)/prebuilt/android16/vendor/lib64/hw/vendor.qti.hardware.qseecom@1.0-impl.so:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/lib64/hw/vendor.qti.hardware.qseecom@1.0-impl.so
+endif
 
 # Init scripts
 PRODUCT_COPY_FILES += \

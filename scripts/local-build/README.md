@@ -6,7 +6,7 @@ not depend on the maintainer's WSL paths.
 
 ## Setup
 
-1. Sync or otherwise prepare an OrangeFox/TWRP source tree locally.
+1. Sync or otherwise prepare an OrangeFox source tree locally.
 2. Create an env file from `env-orangefox-nx809j.example`.
 3. Set `ORANGEFOX_TREE` to that local source tree.
 4. Adjust `LUNCH_TARGET` if you are building a specific candidate such as D2N.
@@ -17,9 +17,10 @@ not depend on the maintainer's WSL paths.
 scripts/local-build/build-orangefox-nx809j-local.sh --env scripts/local-build/env-orangefox-nx809j.local
 ```
 
-The script injects or links `recovery/device/zte/sm88XX` into the OrangeFox tree,
-runs the configured lunch target and build goals, then copies recovery images
-and zips into `out/local-orangefox-nx809j` with `SHA256SUMS`.
+The script injects or links the dock snapshot from `recovery/device/zte/sm88XX`
+into the OrangeFox tree at `device/nubia/NX809J`, runs the configured lunch
+target and build goals, then copies recovery images and zips into
+`out/local-orangefox-nx809j` with `SHA256SUMS`.
 
 ## Safety Boundary
 

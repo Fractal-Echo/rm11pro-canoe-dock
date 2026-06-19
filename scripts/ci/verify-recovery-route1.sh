@@ -33,7 +33,12 @@ contains_literal() {
 reject_workflow_pattern() {
   local pattern="$1"
   local label="$2"
-  if grep -R -n -E "$pattern" "$REPO_ROOT/.github/workflows" >/tmp/rm11-route1-workflow-hit.txt 2>/dev/null; then
+  shift 2
+  local paths=("$@")
+  if [ "${#paths[@]}" -eq 0 ]; then
+    paths=("$REPO_ROOT/.github/workflows")
+  fi
+  if grep -R -n -E "$pattern" "${paths[@]}" >/tmp/rm11-route1-workflow-hit.txt 2>/dev/null; then
     sed -n '1,40p' /tmp/rm11-route1-workflow-hit.txt >&2
     fail "forbidden workflow pattern found: $label"
   fi
@@ -44,6 +49,7 @@ cd "$REPO_ROOT"
 
 for dir in \
   .github/workflows \
+  assets \
   anykernel3 \
   apks \
   container \
@@ -54,7 +60,6 @@ for dir in \
   recovery/manifests \
   recovery/patches \
   recovery/prebuilts \
-  recovery/archive-dead-ends \
   scripts/ci \
   scripts/local-build \
   scripts/recovery
@@ -64,9 +69,13 @@ done
 
 for file in \
   .github/workflows/recovery-verify.yml \
+  .github/workflows/orangefox-recovery-build.yml \
   .github/workflows/anykernel3-verify.yml \
   .github/workflows/apk-verify.yml \
   .github/workflows/module-verify.yml \
+  assets/README.md \
+  assets/orangefox-readme.md \
+  assets/recovery-forensics-readme.md \
   docs/ci/repo-layout.md \
   docs/ci/route1-safe-public-ci.md \
   docs/orangefox-port/17-local-orangefox-build-lane.md \
@@ -74,11 +83,11 @@ for file in \
   recovery/README.md \
   recovery/device/zte/sm88XX/BoardConfig.mk \
   recovery/manifests/d2n-baseline.sha256 \
+  scripts/ci/verify-orangefox-github-build.sh \
   scripts/ci/verify-recovery-route1.sh \
   scripts/local-build/build-orangefox-nx809j-local.sh \
   scripts/local-build/env-orangefox-nx809j.example \
-  scripts/local-build/README.md \
-  scripts/recovery/verify-d2n-preflash.sh
+  scripts/local-build/README.md
 do
   need_file "$file"
 done
@@ -87,27 +96,30 @@ contains_literal docs/orangefox-port/d2n-recovery-baseline-2026-06-15.md 'a9c70c
 contains_literal docs/orangefox-port/d2n-recovery-baseline-2026-06-15.md '5394ee6e45417262f631c9783dc2904b5baeb2cbe9108561053b711c1ef62cab'
 contains_literal recovery/manifests/d2n-baseline.sha256 'a9c70ce885b025fc4b1618798b99bdc05b45239fa76c880415198ab26d9a5fd0'
 contains_literal recovery/manifests/d2n-baseline.sha256 '5394ee6e45417262f631c9783dc2904b5baeb2cbe9108561053b711c1ef62cab'
-contains_literal scripts/recovery/verify-d2n-preflash.sh 'EXPECTED_SHA256="${EXPECTED_SHA256:-a9c70ce885b025fc4b1618798b99bdc05b45239fa76c880415198ab26d9a5fd0}"'
 
-for script in scripts/ci/verify-recovery-route1.sh scripts/local-build/build-orangefox-nx809j-local.sh scripts/recovery/verify-d2n-preflash.sh; do
+for script in scripts/ci/verify-recovery-route1.sh scripts/ci/verify-orangefox-github-build.sh scripts/local-build/build-orangefox-nx809j-local.sh; do
   [ -x "$script" ] || fail "script is not executable: $script"
   pass "script is executable: $script"
 done
 
 reject_workflow_pattern 'self-hosted' 'self-hosted runner'
 reject_workflow_pattern '/home/[A-Za-z0-9._-]+' 'private maintainer path'
-reject_workflow_pattern '(^|[[:space:]])repo[[:space:]]+sync([[:space:]]|$)' 'repo sync'
 reject_workflow_pattern '(^|[[:space:]])fastboot([[:space:]]|$)' 'fastboot'
 reject_workflow_pattern '(^|[[:space:]])adb([[:space:]]|$)' 'adb'
 reject_workflow_pattern '(^|[[:space:]])dd[[:space:]]+if=' 'dd partition reads/writes'
 reject_workflow_pattern 'secrets\.' 'GitHub secrets'
+reject_workflow_pattern '(^|[[:space:]])repo[[:space:]]+sync([[:space:]]|$)' 'repo sync' \
+  "$REPO_ROOT/.github/workflows/recovery-verify.yml" \
+  "$REPO_ROOT/.github/workflows/anykernel3-verify.yml" \
+  "$REPO_ROOT/.github/workflows/apk-verify.yml" \
+  "$REPO_ROOT/.github/workflows/module-verify.yml"
 
 mapfile -t bash_scripts < <(
   {
     printf '%s\n' scripts/ci/verify-recovery-route1.sh
+    printf '%s\n' scripts/ci/verify-orangefox-github-build.sh
     printf '%s\n' scripts/local-build/build-orangefox-nx809j-local.sh
-    printf '%s\n' scripts/local-build/build-orangefox-test-candidate-legacy.sh
-    find scripts/recovery -maxdepth 1 -type f -name 'verify-*.sh' | sort
+    find scripts/recovery -maxdepth 1 -type f -name '*.sh' | sort
   } | awk '!seen[$0]++'
 )
 

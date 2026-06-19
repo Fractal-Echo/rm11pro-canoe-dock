@@ -9,14 +9,15 @@ maintainer's private workstation.
 ## Top-Level Lanes
 
 ```text
-.github/workflows/      public verifier-only GitHub Actions
+.github/workflows/      public validation and manual OrangeFox build workflow
+assets/                 flat user-facing artifacts, hashes, and release notes
 anykernel3/             AnyKernel3 packaging lane and future checks
 apks/                   APK packaging lane and future checks
 container/              Droidspaces and Linux-container lane, paused for now
 docs/                   public guides, notes, CI policy, and archives
 evidence/               tracked evidence indexes, not raw private payload dumps
 modules/                Magisk/KSU module lane and future checks
-recovery/               OrangeFox/TWRP recovery source, manifests, patches, and archives
+recovery/               OrangeFox recovery device tree, manifests, and patches
 scripts/                local helpers, CI verifiers, and repo maintenance scripts
 ```
 
@@ -26,25 +27,28 @@ scripts/                local helpers, CI verifiers, and repo maintenance script
 recovery/
   device/zte/sm88XX/        curated RM11 Pro OrangeFox device-tree snapshot
   manifests/                recovery hash manifests and baseline records
-  patches/                  OrangeFox/TWRP source patch sets
+  patches/                  OrangeFox source patch sets
   prebuilts/                public prebuilt policy and hash manifests
-  archive-dead-ends/        preserved failed/probe recovery candidates
 ```
 
-The active recovery baseline is D2N:
+The active GitHub build target is:
+
+- Lunch target: `orangefox_NX809J-ap2a-eng`
+- Device tree source: `recovery/device/zte/sm88XX`
+- OrangeFox source destination: `device/nubia/NX809J`
+
+D2N remains retained rollback/build evidence:
 
 - Baseline note: `docs/orangefox-port/d2n-recovery-baseline-2026-06-15.md`
-- Local preflash verifier: `scripts/recovery/verify-d2n-preflash.sh`
-- Image SHA-256: `a9c70ce885b025fc4b1618798b99bdc05b45239fa76c880415198ab26d9a5fd0`
-- Zip SHA-256: `5394ee6e45417262f631c9783dc2904b5baeb2cbe9108561053b711c1ef62cab`
+- Hash manifest: `recovery/manifests/d2n-baseline.sha256`
 
 ## CI Boundary
 
-Public GitHub-hosted Actions are verifier-only. They may lint scripts, check
-layout, check recorded hashes, and validate packaging metadata. They must not
-run `repo sync`, full OrangeFox builds, flashing commands, private local paths,
-secrets, or self-hosted runners.
+Public GitHub-hosted PR/push Actions are lightweight validation only. Manual
+workflow dispatch may run the OrangeFox source sync and recovery build on a
+GitHub-hosted runner.
 
 Full recovery builds are local/fork-owner work. The documented lane is
 `scripts/local-build/build-orangefox-nx809j-local.sh` with a user-owned
-OrangeFox/AOSP workspace.
+OrangeFox/AOSP workspace. Any built image remains build evidence until
+device-side boot, UI, ADB, MTP, fastbootd, decryption, and rollback are tested.

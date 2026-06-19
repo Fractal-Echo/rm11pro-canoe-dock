@@ -15,7 +15,7 @@ The dock for RM11 Pro mods: unlock, root, KSU/SUSFS, AnyKernel3, GSI/ROM testing
 | OP-WILD AnyKernel3 KSU/SUSFS | Validated test build |
 | KernelSU-only root | Confirmed |
 | GSI / ROM flow | WIP / reports |
-| OrangeFox recovery | D2N baseline, verifier-only public CI |
+| OrangeFox recovery | D2N baseline, validation CI plus manual build lane |
 | Modules / RedMagic tools | WIP |
 
 ## NX809J Canoe Without A Paddle
@@ -36,9 +36,12 @@ You are modifying Qualcomm boot-chain security. A wrong partition, wrong model, 
 
 Merged RM11 working notes live in [Project Notes](docs/project-notes/README.md). These are categorized maintainer notes for kernel building, recovery, GSI/ROM work, rooting, KernelSU/SuSFS, module testing, decryption, debloat/deodex, APK tooling, assets, and kernel-lab provenance.
 
-OrangeFox RM10 Pro to RM11 Pro port evidence lives in [OrangeFox Port Notes](docs/orangefox-port/README.md). Raw recovery images, logs, and headers stay local under `<local-build-root>/recovery-forensics` and are summarized in tracked docs.
+OrangeFox RM11 Pro / NX809J port evidence lives in [OrangeFox Port Notes](docs/orangefox-port/README.md). Raw recovery images, logs, and headers stay local under `<local-build-root>/recovery-forensics` and are summarized in tracked docs.
 
 The curated OrangeFox device-tree source snapshot lives in [recovery](recovery/README.md), with the active device tree at `recovery/device/zte/sm88XX`.
+
+Small public artifacts that users need directly, including the RM11 Pro
+full-fastboot ABL file, live in [assets](assets/README.md).
 
 ## Release Policy
 

@@ -1,7 +1,10 @@
 # Keep Canoe Dock documentation-first. Do not commit private dumps or payloads.
+out/
+.repo/
 *.img
 *.bin
 *.elf
+!assets/abl_unlock.elf
 *.mbn
 *.zip
 *.7z
@@ -18,7 +21,25 @@
 *.so
 *.ko
 *.pem
+*.pk8
 *.key
+*.p12
+*.jks
+*.keystore
+*.token
+*.secret
+.env
+.env.*
+
+# Explicit boot-chain and partition images. These are covered by *.img, kept
+# here as a review tripwire for recovery/boot-chain work.
+recovery.img
+boot.img
+init_boot.img
+vendor_boot.img
+dtbo.img
+vbmeta*.img
+super.img
 
 # Local working folders.
 work/
@@ -26,6 +47,16 @@ tmp/
 private/
 backups/
 payloads/
+payload-dumps/
+payload_dumps/
+edl/
+edl-dumps/
+edl_dumps/
+raw-partition-backups/
+raw_partition_backups/
+partition-backups/
+personal-logs/
+logs/
 artifacts/
 canoe-dock-setup-files/
 
