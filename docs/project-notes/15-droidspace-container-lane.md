@@ -499,7 +499,7 @@ sha256: bd95eeeba50a1b725e25534959af6285b04b8696cf527271610c02ae86c4fa83
 
 Core module:
 /home/richtofen/.android/repositories/Droidspaces-Nebula/build/module/Droidspaces-Nebula-Core-0.2.2.zip
-size: 33759
+size: 33756
 sha256: ff3997868a9f24cf29a4eefbbf390184c6d6dd14aebf82478b462a557220a9b3
 ```
 
