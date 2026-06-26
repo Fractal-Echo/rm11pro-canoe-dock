@@ -29,6 +29,10 @@ RedMagic, Nubia Toolkit, and PowerDeck readiness from one place. It does not
 ship proprietary GameHub assets, start game clients, or enable hook/write
 behavior by default.
 
+Compatibility note: Vower WayLandIE latest is tracked as a broader-device
+candidate for non-RM11Pro or lower-spec phones, but it is not the RM11 R6
+sidecar proof baseline until a bounded install/launch/display proof is captured.
+
 ## Related APK References
 
 ```text
