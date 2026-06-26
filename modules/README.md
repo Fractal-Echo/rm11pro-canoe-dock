@@ -22,6 +22,30 @@ Current local module/tool references:
 The dock tracks only notes and manifests for these. Do not commit module zips,
 DEX files, `.so` payloads, APKs, release keys, or build outputs here.
 
+## Nebula Core Baseline Module
+
+Checked: 2026-06-26
+
+```text
+source repo: /home/richtofen/.android/repositories/Droidspaces-Nebula
+artifact: /home/richtofen/.android/repositories/Droidspaces-Nebula/build/module/Droidspaces-Nebula-Core-0.2.2.zip
+size: 33759
+sha256: ff3997868a9f24cf29a4eefbbf390184c6d6dd14aebf82478b462a557220a9b3
+module id: nebula_core
+status: debug/test baseline module, not stable release
+```
+
+Current fixed-command surface:
+
+- `integrations baseline --json`
+- `display lanes --json`
+- `display method-containers --json`
+- `display method-profiles --json`
+
+The module is read-first by design. Baseline status does not enable LSPosed
+hooks, write fan/pump/LED/trigger/thermal nodes, disable DroidSpaces modules, or
+start Proton, Wine, Steam, DXVK, or game clients.
+
 Each module note should include:
 
 - Version.

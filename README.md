@@ -16,7 +16,8 @@ The dock for RM11 Pro mods: unlock, root, KSU/SUSFS, AnyKernel3, GSI/ROM testing
 | KernelSU-only root | Confirmed |
 | GSI / ROM flow | WIP / reports |
 | OrangeFox recovery | D2N baseline, validation CI plus manual build lane |
-| Modules / RedMagic tools | WIP |
+| Modules / RedMagic tools | WIP; Nebula baseline APK/module hashes documented |
+| DroidSpaces / Wayland containers | Anland visible proof captured; Nebula profile templates documented |
 
 ## NX809J Canoe Without A Paddle
 
@@ -63,9 +64,9 @@ No artifact gets a stable label unless it has:
 
 - AnyKernel3 OP-WILD KSU/SUSFS: lane placeholder in [AnyKernel3](anykernel3/README.md), older release notes are being reconciled before publication.
 - OrangeFox recovery: D2N baseline in [OrangeFox Port Notes](docs/orangefox-port/README.md), source lane in [recovery](recovery/README.md).
-- APKs: lane placeholder in [APKs](apks/README.md).
-- Modules and tools: lane placeholder in [Modules](modules/README.md).
-- Droidspaces/container work: paused lane in [Container](container/README.md).
+- APKs: Nebula debug APK and WayLandIE/DroidSpaces references in [APKs](apks/README.md).
+- Modules and tools: Nebula Core module plus RedMagic/Nubia references in [Modules](modules/README.md).
+- Droidspaces/container work: active lane in [Container](container/README.md).
 
 ## Project Lineage
 

@@ -5,7 +5,7 @@ set -euo pipefail
 # Existing repositories are fetched, not pulled or reset.
 
 REPO_ROOT="${REPO_ROOT:-${HOME}/.android/repositories}"
-TARGET_DIR="${TARGET_DIR:-${REPO_ROOT}/droidspace-core}"
+TARGET_DIR="${TARGET_DIR:-${REPO_ROOT}/rm11mainassets/projects/droidspace-repos}"
 
 clone_or_fetch() {
   local repo="$1"
@@ -48,6 +48,9 @@ clone_or_fetch "linuxcontainers-mirror" "main"
 clone_or_fetch "VirtualAP" "main"
 clone_or_fetch "termux-app" "master"
 clone_or_fetch "termux-x11" "master"
+clone_or_fetch "WayLandIE" "main"
+clone_or_fetch "recovery-console" "main"
+clone_or_fetch "droidspaces-recovery-hack-example" "main"
 
 cat <<'EOF'
 
@@ -55,7 +58,6 @@ Deferred heavy repos:
   Fractal-Echo/Droidspaces-kernel
   Fractal-Echo/mesa-for-android-container-rm11pro
   Fractal-Echo/Winlator-Ludashi-emulador-windows-acompanhar
-  Fractal-Echo/droidspaces-recovery-hack-example
 
 This script intentionally does not pull, merge, reset, clean, or build.
 EOF

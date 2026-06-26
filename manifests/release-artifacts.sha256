@@ -1,3 +1,7 @@
 # Placeholder. Release ZIPs/images are not committed to this repo by default.
 # Known validated AnyKernel package:
 # 7CAC8A90FD065FD2F31F8E1938ECE8F5BEA061CBD8213A03E44B86BA50EA1B4A  AK3_RM11Pro_Android16_6.12.23_KSUN_SuSFS_v2.1.0_TEST.zip
+
+# Nebula debug/test artifacts, documented but not committed:
+# bd95eeeba50a1b725e25534959af6285b04b8696cf527271610c02ae86c4fa83  Droidspaces-Nebula/app/build/outputs/apk/debug/app-debug.apk
+# ff3997868a9f24cf29a4eefbbf390184c6d6dd14aebf82478b462a557220a9b3  Droidspaces-Nebula/build/module/Droidspaces-Nebula-Core-0.2.2.zip
