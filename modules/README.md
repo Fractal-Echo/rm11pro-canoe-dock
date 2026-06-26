@@ -29,7 +29,7 @@ Checked: 2026-06-26
 ```text
 source repo: /home/richtofen/.android/repositories/Droidspaces-Nebula
 artifact: /home/richtofen/.android/repositories/Droidspaces-Nebula/build/module/Droidspaces-Nebula-Core-0.2.2.zip
-size: 33759
+size: 33756
 sha256: ff3997868a9f24cf29a4eefbbf390184c6d6dd14aebf82478b462a557220a9b3
 module id: nebula_core
 status: debug/test baseline module, not stable release

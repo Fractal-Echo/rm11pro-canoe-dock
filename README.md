@@ -33,6 +33,29 @@ You are modifying Qualcomm boot-chain security. A wrong partition, wrong model, 
 4. Disable OTA before going online: [OTA Disable](docs/03-ota-disable.md).
 5. Back up critical partitions: [Backups And Privacy](docs/04-backups-and-privacy.md).
 
+## Latest Nebula Baseline
+
+Checked: 2026-06-26
+
+Nebula is the current DroidSpaces/Wayland baseline control deck. These are
+debug/test artifacts, not stable releases:
+
+```text
+APK:
+/home/richtofen/.android/repositories/Droidspaces-Nebula/app/build/outputs/apk/debug/app-debug.apk
+size: 6468072
+sha256: bd95eeeba50a1b725e25534959af6285b04b8696cf527271610c02ae86c4fa83
+
+Core module:
+/home/richtofen/.android/repositories/Droidspaces-Nebula/build/module/Droidspaces-Nebula-Core-0.2.2.zip
+size: 33756
+sha256: ff3997868a9f24cf29a4eefbbf390184c6d6dd14aebf82478b462a557220a9b3
+```
+
+Install the APK first, install the matching Nebula Core module second, then
+open Nebula and press **Refresh**. Details live in [APKs](apks/README.md),
+[Modules](modules/README.md), and [Container](container/README.md).
+
 ## Project Notes
 
 Merged RM11 working notes live in [Project Notes](docs/project-notes/README.md). These are categorized maintainer notes for kernel building, recovery, GSI/ROM work, rooting, KernelSU/SuSFS, module testing, decryption, debloat/deodex, APK tooling, assets, and kernel-lab provenance.
