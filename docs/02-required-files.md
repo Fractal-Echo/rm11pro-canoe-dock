@@ -10,6 +10,7 @@ Prepare tools before modifying the device:
 - Engineering ABL only if confirmed for RM11 Pro / NX809J.
 - Magisk if using the initial `init_boot` root path.
 - KernelSU-Next Manager if validating the OP-WILD KSU/SUSFS package.
+- ReZygisk v1.0.0-rc.9 only if validating standalone Zygisk provider lanes; disable Magisk built-in Zygisk before using it.
 - Rollback copies of critical partitions.
 
 Critical rollback set:

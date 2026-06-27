@@ -6,6 +6,7 @@ Examples:
 
 - RedMagic Control Center.
 - Nubia Toolkit.
+- ReZygisk.
 - Device-specific helper modules.
 
 Current local module/tool references:
@@ -14,6 +15,7 @@ Current local module/tool references:
 /mnt/e/Android/RM-11-Pro/MODULES/gpp-enable-module
 /mnt/e/Android/RM-11-Pro/MODULES/gpp-enable-module.zip
 /mnt/e/Android/RM-11-Pro/MODULES/v34.3-Integrity-Box-04-04-2026
+/mnt/d/Downloads/ReZygisk-v1.0.0-rc.9-release.zip
 /home/richtofen/android/toolbox/NubiaToolkit
 /home/richtofen/android/toolbox/Redmagic-Control-Center
 /home/richtofen/android/toolbox/reversa
@@ -22,15 +24,36 @@ Current local module/tool references:
 The dock tracks only notes and manifests for these. Do not commit module zips,
 DEX files, `.so` payloads, APKs, release keys, or build outputs here.
 
+## ReZygisk Provider Artifact
+
+Checked: 2026-06-27
+
+```text
+artifact: /mnt/d/Downloads/ReZygisk-v1.0.0-rc.9-release.zip
+sha256: 5da9308aca2f1233e1b74744a86b39ab55749db352a829c7578743df6af16f4f
+module id: rezygisk
+name: ReZygisk
+version: v1.0.0 (513-faccedf-release)
+versionCode: 513
+author: The PerformanC Organization
+description: Standalone implementation of Zygisk.
+internal sha256 sidecars: 96 checked, 0 failures
+```
+
+Use this as the standalone Zygisk provider candidate for Nebula hook-lane
+testing when the normal provider path does not work. Disable Magisk built-in
+Zygisk before using this module; its `service.sh` and `post-fs-data.sh` exit
+when `ZYGISK_ENABLED` is already set.
+
 ## Nebula Core Baseline Module
 
-Checked: 2026-06-26
+Checked: 2026-06-27
 
 ```text
 source repo: /home/richtofen/.android/repositories/Droidspaces-Nebula
 artifact: /home/richtofen/.android/repositories/Droidspaces-Nebula/build/module/Droidspaces-Nebula-Core-0.2.2.zip
-size: 33756
-sha256: ff3997868a9f24cf29a4eefbbf390184c6d6dd14aebf82478b462a557220a9b3
+size: 34365
+sha256: 27c6a46ff942cbf66771667128978c1ce0f16efff8b23dc95c41c3a9c0384436
 module id: nebula_core
 status: debug/test baseline module, not stable release
 ```

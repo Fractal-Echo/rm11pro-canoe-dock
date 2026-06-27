@@ -486,7 +486,7 @@ listed in the durable proof evidence file.
 
 ## Nebula Baseline And Method Profiles
 
-Checked: 2026-06-26
+Checked: 2026-06-27
 
 Nebula now owns the baseline APK/module coordination layer for the RM11 Pro
 container/display work:
@@ -494,13 +494,13 @@ container/display work:
 ```text
 APK:
 /home/richtofen/.android/repositories/Droidspaces-Nebula/app/build/outputs/apk/debug/app-debug.apk
-size: 6468072
-sha256: bd95eeeba50a1b725e25534959af6285b04b8696cf527271610c02ae86c4fa83
+size: 6468816
+sha256: aad9d504b5e8a41a5a7bf8718024ba631ccc97c47f2ac4e413c15eb35283e286
 
 Core module:
 /home/richtofen/.android/repositories/Droidspaces-Nebula/build/module/Droidspaces-Nebula-Core-0.2.2.zip
-size: 33756
-sha256: ff3997868a9f24cf29a4eefbbf390184c6d6dd14aebf82478b462a557220a9b3
+size: 34365
+sha256: 27c6a46ff942cbf66771667128978c1ce0f16efff8b23dc95c41c3a9c0384436
 ```
 
 Current Nebula Core command surface:
