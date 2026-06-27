@@ -6,13 +6,13 @@ apps in public Actions.
 
 ## Nebula Baseline Debug APK
 
-Checked: 2026-06-26
+Checked: 2026-06-27
 
 ```text
 source repo: /home/richtofen/.android/repositories/Droidspaces-Nebula
 artifact: /home/richtofen/.android/repositories/Droidspaces-Nebula/app/build/outputs/apk/debug/app-debug.apk
-size: 6468072
-sha256: bd95eeeba50a1b725e25534959af6285b04b8696cf527271610c02ae86c4fa83
+size: 6468816
+sha256: aad9d504b5e8a41a5a7bf8718024ba631ccc97c47f2ac4e413c15eb35283e286
 package: io.droidspaces.nebula
 status: debug/test artifact, not stable release
 ```

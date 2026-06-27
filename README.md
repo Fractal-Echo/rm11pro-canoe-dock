@@ -20,6 +20,7 @@ Route 1 safe public CI is merged to `main`. Public GitHub Actions are verifier-o
 | OrangeFox recovery | Current short-name test package plus D2N fallback baseline |
 | AnyKernel3 / APK / module lanes | AnyKernel3 Droidspace prebuilt; APK/module verifier lanes staged |
 | Modules / RedMagic tools | WIP / verifier lane staged |
+| DroidSpaces / Wayland / Nebula | Debug APK/module hashes documented; ReZygisk provider candidate noted |
 
 ## Current Downloads
 

@@ -6,6 +6,7 @@ Known references from source material:
 
 - Magisk.
 - KernelSU-Next.
+- ReZygisk.
 - RedMagic Control Center.
 - Nubia Toolkit.
 - MIO Kitchen.
@@ -25,6 +26,7 @@ Current local paths:
 Observed local module payloads:
 
 - `gpp-enable-module`: tiny module tree plus ZIP, local-only until tested.
+- `ReZygisk-v1.0.0-rc.9-release.zip`: standalone Zygisk provider candidate for Nebula hook-lane testing; SHA-256 `5da9308aca2f1233e1b74744a86b39ab55749db352a829c7578743df6af16f4f`; disable Magisk built-in Zygisk before use.
 - `v34.3-Integrity-Box-04-04-2026`: contains scripts, DEX, keybox material, web UI, and native `.so` payloads; keep out of the public repo.
 - `attestation`: local-only binary/text artifact, not classified for release.
 
