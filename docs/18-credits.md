@@ -17,6 +17,7 @@ Project/tool credit/context:
 - KernelSU-Next: root/module runtime reference.
 - SUSFS: root/module hiding/filesystem feature reference.
 - Magisk: module packaging/runtime compatibility reference.
+- ReZygisk / The PerformanC Organization: standalone Zygisk provider reference for Nebula hook-lane testing.
 - OrangeFox and TWRP: recovery source and UX lineage for the RM11 Pro recovery lane.
 - AOSP and Android recovery/device-tree ecosystem: baseline build system and recovery integration context.
 - Coding-BR/android_kernel_nubia_sm8850_qwjujube: RM11/Nubia SM8850 kernel source lineage for local kernel-lab material.

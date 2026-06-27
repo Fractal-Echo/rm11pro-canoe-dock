@@ -5,3 +5,7 @@
 f2547c3ff9d43b060ba0ece1e9f497e2de0fbe0180a6eb8bdde3df01d80ce0d3  releases/recovery/orangefox/current/OrangeFox-RM11.zip
 5394ee6e45417262f631c9783dc2904b5baeb2cbe9108561053b711c1ef62cab  releases/recovery/orangefox/d2n/OrangeFox-RM11-D2N.zip
 c00f8f0ccc3b1b479e419634b15408d8dfbcd107ad4e3568f11c297661623056  releases/anykernel/goldbug/AK3-RM11-Goldbug.zip
+
+# Nebula debug/test artifacts, documented but not committed:
+# aad9d504b5e8a41a5a7bf8718024ba631ccc97c47f2ac4e413c15eb35283e286  Droidspaces-Nebula/app/build/outputs/apk/debug/app-debug.apk
+# 27c6a46ff942cbf66771667128978c1ce0f16efff8b23dc95c41c3a9c0384436  Droidspaces-Nebula/build/module/Droidspaces-Nebula-Core-0.2.2.zip
