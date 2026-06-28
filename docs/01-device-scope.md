@@ -9,7 +9,7 @@ Primary target:
 Known non-targets unless explicitly documented:
 
 - RM11 Air.
-- RM10 / RM10 Pro / RM10S.
+- RM10 / RM10 Pro / RM10S; not file-compatible with RM11 Pro.
 - Astra / Pad 3 Pro.
 - Z70U.
 - Z80U.
