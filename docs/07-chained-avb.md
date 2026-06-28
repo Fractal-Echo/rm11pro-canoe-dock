@@ -1,6 +1,6 @@
 # Chained AVB
 
-RM11 / RM10 style boot chains use chained AVB. Do not disable only one vbmeta layer and assume the rest of the chain will remain coherent.
+RM11 / RM10 style boot chains use chained AVB; this is comparison-only context, not permission to mix device files. Do not disable only one vbmeta layer and assume the rest of the chain will remain coherent.
 
 Risky pattern:
 

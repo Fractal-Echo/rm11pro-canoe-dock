@@ -46,3 +46,13 @@ Excluded:
 Build note:
 
 This dock snapshot is enough to audit the port logic and public documentation. A full recovery build still needs a hydrated OrangeFox source tree and the device prebuilts from the original working environment.
+
+## Reversa Source-Boundary Policy
+
+The repo root `reversa.project.json` records the same boundary for automated scans:
+
+- OrangeFox/AOSP checkout paths such as `device/nubia/NX809J` and `vendor/twrp/config/common.mk` are external checkout paths.
+- Keys, firmware, kernel images, DTBO images, and binary prebuilts are local hydration inputs and stay out of the public dock.
+- Absolute `/system`, `/vendor`, `/odm`, `/product`, and `/apex` references inside init rc files are target recovery-root runtime paths, not host repo paths.
+
+Reversa should report those as source-boundary evidence, not as missing files to patch around.

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "project_kind": "release_hub",
+  "path_policies": [
+    {
+      "id": "orangefox_checkout_paths",
+      "classification": "external_checkout_path",
+      "paths": [
+        "device/nubia/NX809J",
+        "device/zte/sm88XX",
+        "vendor/twrp/config/common.mk",
+        "vendor/twrp/config/BoardConfigSoong.mk",
+        "vendor/twrp",
+        "vendor/qcom/opensource/healthd-ext/aidl/",
+        "system/vold",
+        "system/update_engine",
+        "external/guava",
+        "external/gflags",
+        "device/qcom/common",
+        "device/qcom/twrp-common",
+        "hardware/qcom/bootctrl/aidl/",
+        "hardware/google/interfaces",
+        "hardware/google/",
+        "hardware/google/pixel"
+      ],
+      "reason": "These paths exist only after the dock snapshot is hydrated into an OrangeFox/AOSP source checkout."
+    },
+    {
+      "id": "private_hydrated_payloads",
+      "classification": "local_hydration_required",
+      "paths": [
+        "device/nubia/NX809J/keys/",
+        "device/nubia/NX809J/security/",
+        "device/nubia/NX809J/prebuilt/",
+        "recovery/device/zte/sm88XX/keys/",
+        "recovery/device/zte/sm88XX/security/",
+        "recovery/device/zte/sm88XX/prebuilt/kernel",
+        "recovery/device/zte/sm88XX/prebuilt/dtbo.img",
+        "recovery/device/zte/sm88XX/prebuilt/android16/dtbo.img",
+        "recovery/device/zte/sm88XX/prebuilt/system/bin/",
+        "recovery/device/zte/sm88XX/prebuilt/android16/system/bin/",
+        "recovery/device/zte/sm88XX/prebuilt/android16/system/lib64/",
+        "recovery/device/zte/sm88XX/prebuilt/android16/vendor/bin/",
+        "recovery/device/zte/sm88XX/prebuilt/android16/vendor/lib64/"
+      ],
+      "reason": "Private keys, binary payloads, firmware, and legally acquired device prebuilts are intentionally excluded from the public release hub."
+    },
+    {
+      "id": "recovery_root_runtime_paths",
+      "classification": "recovery_root_runtime_path",
+      "paths": [
+        "/system/bin/",
+        "/system/etc/",
+        "/vendor/bin/",
+        "/vendor/etc/",
+        "/vendor/firmware/",
+        "/vendor/lib64/",
+        "/odm/etc/",
+        "/product/",
+        "/apex/",
+        "system/bin/",
+        "system/background",
+        "system/performance",
+        "vendor/bin/",
+        "vendor/etc/init/"
+      ],
+      "reason": "Absolute paths in init rc files are target recovery-root runtime paths, not repo-root host checkout paths."
+    }
+  ]
+}
