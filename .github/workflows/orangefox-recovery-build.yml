@@ -1,0 +1,101 @@
+name: OrangeFox Recovery Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      full_build:
+        description: "Attempt the GitHub-hosted OrangeFox source sync and recovery build"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  orangefox-preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify public OrangeFox build lane
+        run: scripts/ci/verify-orangefox-github-build.sh
+
+  orangefox-full-build:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.full_build == true }}
+    needs: orangefox-preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      RM11_INCLUDE_ANDROID16_PREBUILTS: "false"
+      DEVICE_TREE_SOURCE: recovery/device/zte/sm88XX
+      DEVICE_TREE_DEST: device/nubia/NX809J
+      LUNCH_TARGET: orangefox_NX809J-ap2a-eng
+    steps:
+      - name: Checkout public dock
+        uses: actions/checkout@v4
+
+      - name: Install build prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y bc bison build-essential ccache curl flex git libssl-dev python3 unzip zip
+
+      - name: Install repo client
+        run: |
+          mkdir -p "$RUNNER_TEMP/repo-bin"
+          curl -fsSL https://storage.googleapis.com/git-repo-downloads/repo -o "$RUNNER_TEMP/repo-bin/repo"
+          chmod +x "$RUNNER_TEMP/repo-bin/repo"
+          echo "$RUNNER_TEMP/repo-bin" >> "$GITHUB_PATH"
+
+      - name: Sync OrangeFox source
+        run: |
+          mkdir -p "$RUNNER_TEMP/orangefox"
+          cd "$RUNNER_TEMP/orangefox"
+          repo init --depth=1 -u https://gitlab.com/OrangeFox/Manifest.git -b fox_14.1
+          repo sync --force-sync -c -j"$(nproc)" --no-clone-bundle --no-tags
+
+      - name: Stage NX809J device tree
+        run: |
+          cd "$RUNNER_TEMP/orangefox"
+          mkdir -p device/nubia
+          cp -a "$GITHUB_WORKSPACE/$DEVICE_TREE_SOURCE" "$DEVICE_TREE_DEST"
+
+      - name: Apply public recovery patches
+        run: |
+          cd "$RUNNER_TEMP/orangefox"
+          if [ -d "$GITHUB_WORKSPACE/recovery/patches/fox_14.1" ]; then
+            find "$GITHUB_WORKSPACE/recovery/patches/fox_14.1" -type f -name '*.patch' -print0 |
+              sort -z |
+              xargs -0 -r -n 1 git apply --check
+            find "$GITHUB_WORKSPACE/recovery/patches/fox_14.1" -type f -name '*.patch' -print0 |
+              sort -z |
+              xargs -0 -r -n 1 git apply
+          fi
+
+      - name: Build recovery image
+        run: |
+          cd "$RUNNER_TEMP/orangefox"
+          source build/envsetup.sh
+          lunch "$LUNCH_TARGET"
+          mka recoveryimage
+
+      - name: Collect build evidence
+        if: always()
+        run: |
+          cd "$RUNNER_TEMP/orangefox"
+          mkdir -p "$GITHUB_WORKSPACE/out/github-orangefox-nx809j"
+          find out/target/product -maxdepth 4 -type f \( -name 'recovery.img' -o -name '*.zip' \) -print |
+            sort |
+            tee "$GITHUB_WORKSPACE/out/github-orangefox-nx809j/artifacts.txt"
+          if [ -s "$GITHUB_WORKSPACE/out/github-orangefox-nx809j/artifacts.txt" ]; then
+            xargs -a "$GITHUB_WORKSPACE/out/github-orangefox-nx809j/artifacts.txt" sha256sum |
+              tee "$GITHUB_WORKSPACE/out/github-orangefox-nx809j/sha256sums.txt"
+          fi
+
+      - name: Upload build evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: orangefox-nx809j-github-build-evidence
+          path: out/github-orangefox-nx809j

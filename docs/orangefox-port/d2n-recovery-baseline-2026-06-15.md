@@ -47,25 +47,20 @@ AVB fingerprint:
 REDMAGIC/orangefox_NX809J_codingbr_d2n/sm88XX:99.87.36/AP2A.240905.003/eng.richto.20260615.023045:eng/test-keys
 ```
 
-## Verifier
+## Retained Verification Evidence
 
-Local helper:
-
-```bash
-scripts/recovery/verify-d2n-preflash.sh
-```
-
-Passing log:
+Former local verifier rerun log remains in local raw forensics:
 
 ```text
-<local-build-root>/recovery-forensics/d2n-auto-decrypt-ui-gatekeeper-polish/logs/verify-d2n-preflash-rerun.log
+<local-build-root>/recovery-forensics/d2n-auto-decrypt-ui-gatekeeper-polish/logs/
 ```
 
-Verifier scope:
+Recorded scope:
 
 - Checks the frozen image size and SHA-256.
 - Checks AVB fingerprint contains `orangefox_NX809J_codingbr_d2n`.
-- Checks the D2N product makefile, lunch choices, and BoardConfig overlay stack.
+- Checked the former D2N product makefile, lunch choices, and BoardConfig
+  overlay stack.
 - Confirms D2N stays in the crypto-enabled build lane.
 - Confirms the D1T3 touch marker remains present.
 - Confirms no Wi-Fi lane is merged.
@@ -182,11 +177,6 @@ Known rollback candidates remain local:
 ```text
 <local-build-root>/recovery-forensics/d2m-auto-decrypt-libcxx-keystore/OrangeFox-R12.0-Unofficial-NX809J-d2m-auto-decrypt-libcxx-keystore.img
 sha256: 7a08ab7aaa14d839b5642507a4608710900d054a7af9724b35a385e2d13dac3a
-```
-
-```text
-<local-build-root>/recovery-forensics/TWRP-3.7.1-16devreverse.img
-sha256: dfeeb53817cde67ce3b5a93e5087d8395c4b4f1ca44aac793ad7aa704df34a10
 ```
 
 Use one-slot recovery tests first. Do not write both recovery slots without a

@@ -56,15 +56,9 @@ When recovery UI boots, test in this order:
 7. Reboot to system.
 8. Rollback recovery image.
 
-Before any D2G flash, run:
-
-```bash
-<repo-root>/scripts/recovery/verify-d2g-preflash.sh
-```
-
-The script must prove image size, frozen SHA-256, D2G AVB fingerprint, D2G
-default-property marker, all manual `sys.rm11.d2g.*` triggers, and the
-crypto-enabled compile-lane expectation.
+The obsolete D2G preflash lane was removed from the public dock. Current
+recovery work should use the `orangefox_NX809J-ap2a-eng` build lane and retain
+D2N only as rollback/build evidence.
 
 ## Do Not Mix These
 

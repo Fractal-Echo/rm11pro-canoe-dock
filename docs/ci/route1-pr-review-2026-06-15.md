@@ -61,7 +61,7 @@ Recorded in:
 
 - `docs/orangefox-port/d2n-recovery-baseline-2026-06-15.md`
 - `recovery/manifests/d2n-baseline.sha256`
-- `scripts/recovery/verify-d2n-preflash.sh` for the image hash
+- `recovery/manifests/d2n-baseline.sha256` for the retained D2N hashes
 
 ## Verification
 
@@ -87,25 +87,27 @@ Final hygiene checks:
 - `scripts/ci/` contains no private maintainer home path.
 - D2N image and zip hashes are unchanged.
 
-## Untouched Local Files
+## Later Layout Reconciliation
 
-These local worktree changes were intentionally not included in the Route 1 PR:
+These local worktree changes were intentionally not included in the Route 1 PR.
+They are now expected to live in the flat lane indexes or `assets/` paths shown
+below:
 
 - `docs/project-notes/15-droidspace-container-lane.md`
-- `releases/anykernel/README.md`
-- `releases/anykernel/rm11pro-android16-6.12.23-opwild-ksun-susfs/PROVENANCE.md`
-- `releases/anykernel/rm11pro-android16-6.12.23-opwild-ksun-susfs/README.md`
-- `releases/anykernel/rm11pro-android16-6.12.23-opwild-ksun-susfs/ROLLBACK.md`
-- `releases/anykernel/rm11pro-android16-6.12.23-opwild-ksun-susfs/VERIFY.md`
-- `releases/anykernel/rm11pro-android16-6.12.23-opwild-ksun-susfs/anykernel-rm11-guardrails.patch`
-- `releases/anykernel/rm11pro-android16-6.12.23-opwild-ksun-susfs/hashes.sha256`
-- `releases/gsi-roms/README.md`
-- `releases/modules/README.md`
-- `releases/recovery/README.md`
-- `releases/recovery/orangefox/BUILD-RESULT.md`
-- `releases/recovery/orangefox/FORENSICS.md`
-- `releases/recovery/orangefox/README.md`
-- `releases/recovery/orangefox/ROLLBACK.md`
+- `anykernel3/README.md`
+- `assets/anykernel3-opwild-ksun-susfs-provenance.md`
+- `assets/anykernel3-opwild-ksun-susfs-readme.md`
+- `assets/anykernel3-opwild-ksun-susfs-rollback.md`
+- `assets/anykernel3-opwild-ksun-susfs-verify.md`
+- `assets/anykernel3-opwild-ksun-susfs-guardrails.patch`
+- `assets/anykernel3-opwild-ksun-susfs-hashes.sha256`
+- `assets/gsi-roms-readme.md`
+- `modules/README.md`
+- `recovery/README.md`
+- `assets/orangefox-build-result.md`
+- `assets/orangefox-forensics.md`
+- `assets/orangefox-readme.md`
+- `assets/orangefox-rollback.md`
 
 ## Merge Recommendation
 
