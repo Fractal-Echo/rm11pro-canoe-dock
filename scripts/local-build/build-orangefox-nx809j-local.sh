@@ -63,7 +63,7 @@ source "$ENV_FILE"
 
 : "${ORANGEFOX_TREE:?set ORANGEFOX_TREE in the env file}"
 : "${DEVICE_TREE_SOURCE:=$REPO_ROOT/recovery/device/zte/sm88XX}"
-: "${DEVICE_TREE_DEST_REL:=device/zte/sm88XX}"
+: "${DEVICE_TREE_DEST_REL:=device/nubia/NX809J}"
 : "${DEVICE_TREE_MODE:=copy}"
 : "${PRODUCT_CODENAME:=NX809J}"
 : "${LUNCH_TARGET:=orangefox_NX809J-ap2a-eng}"
@@ -144,10 +144,12 @@ fi
 
 cd "$ORANGEFOX_TREE"
 # shellcheck source=/dev/null
+set +u
 source build/envsetup.sh
 lunch "$LUNCH_TARGET"
 
 read -r -a goals <<<"$BUILD_GOALS"
 mka "-j${JOBS}" "${goals[@]}"
+set -u
 
 collect_artifacts

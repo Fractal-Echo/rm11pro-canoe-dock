@@ -6,7 +6,9 @@ The dock for RM11 Pro mods: unlock, root, KSU/SUSFS, AnyKernel3, GSI/ROM testing
 
 `canoe` is the RM11 Pro platform reference seen in device evidence. `dock` is where validated release work, rollback notes, hashes, and public guides land. This is not a kernel source archaeology repo, an OrangeFox device-tree repo, or the custom source-kernel lab.
 
-Route 1 safe public CI is merged to `main`. Public GitHub Actions are verifier-only for recovery, AnyKernel3, APK, and module lanes; full OrangeFox builds remain local/fork-owner controlled. D2N is the current RM11 Pro NX809J/canoe recovery baseline, not a universal stable guarantee across every firmware or local modification state.
+Route 1 safe public CI is merged to `main`. Public GitHub Actions verify recovery, AnyKernel3, APK, and module lanes, with one experimental OrangeFox build/release workflow for NX809J recovery artifacts. D2N is the current RM11 Pro NX809J/canoe recovery baseline, not a universal stable guarantee across every firmware or local modification state.
+
+An experimental GitHub Actions workflow can sync OrangeFox 14.1, build the current NX809J recovery tree, and update the single fixed prerelease `orangefox-nx809j-latest`. A generated release proves only that the image built in CI; it does not prove recovery boot, UI, ADB, touch, MTP, decryption, ZIP flashing, backup/restore, fastbootd, or USB OTG on a real device.
 
 ## Current Status
 
@@ -50,6 +52,52 @@ The raw `recovery.img` is not committed separately because it is exactly
 > Files are not interchangeable across RM11 Pro, RM11 Air, RM10, RM10S, Astra / Pad 3 Pro, Z70U, Z80U, or other Nubia/ZTE devices. Do not flash ABL, vbmeta, init_boot, vendor_boot, boot, dtbo, recovery, or firmware images unless the file is confirmed for your exact model and firmware.
 
 You are modifying Qualcomm boot-chain security. A wrong partition, wrong model, wrong slot, or mismatched AVB chain can break boot, route the device to fastboot/dumper mode, or require EDL recovery.
+
+## Recovery / TWRP Safety
+
+> [!CAUTION]
+> Do not try to fix or change the device fingerprint after using TWRP or OrangeFox recovery.
+
+> [!CAUTION]
+> Do not install TWRP or OrangeFox while Magisk or KernelSU modules are active.
+
+The `abl_unlock.elf` userdebug ABL file is included in this repository. It can be flashed with ZTE Toolbox to make fastboot access easier.
+
+To enable fastboot with ZTE Toolbox:
+
+1. Open ZTE Toolbox.
+2. Select option `12`.
+3. Enter the target ABL partition name: `abl_a` or `abl_b`.
+4. Flash the included `abl_unlock.elf` userdebug ABL.
+5. Reboot the phone into fastboot:
+
+```shell
+adb reboot bootloader
+```
+
+You can also flash recovery directly with ZTE Toolbox:
+
+1. Select option `12`.
+2. Enter the target recovery partition name: `recovery_a` or `recovery_b`.
+3. Repeat the same step for the other recovery slot if you want to flash both `recovery_a` and `recovery_b`.
+
+Manual fastboot recovery commands:
+
+```shell
+fastboot flash recovery_a recovery.img
+fastboot flash recovery_b recovery.img
+```
+
+For GSI ROM installation, disable verity and verification on the vbmeta partitions from fastboot:
+
+```shell
+fastboot --disable-verity flash vbmeta_a vbmeta.img
+fastboot --disable-verity flash vbmeta_b vbmeta.img
+fastboot --disable-verity --disable-verification flash vbmeta_system_a vbmeta_system.img
+fastboot --disable-verity --disable-verification flash vbmeta_system_b vbmeta_system.img
+```
+
+If the phone enters a bootloop after installation, open ZTE Toolbox and select option `19`.
 
 ## Start Here
 
@@ -154,6 +202,8 @@ Merged RM11 working notes live in [Project Notes](docs/project-notes/README.md).
 OrangeFox RM10 Pro to RM11 Pro port evidence lives in [OrangeFox Port Notes](docs/orangefox-port/README.md). Raw recovery images, logs, and headers stay local under `<local-build-root>/recovery-forensics` and are summarized in tracked docs.
 
 The curated OrangeFox device-tree source snapshot lives in [recovery](recovery/README.md), with the active device tree at `recovery/device/zte/sm88XX`.
+
+Experimental OrangeFox build artifacts are published from the Actions workflow only when the public runner has enough disk to complete the sync and build. The workflow updates only the fixed `orangefox-nx809j-latest` release and replaces previous assets instead of accumulating automatic releases. Treat those artifacts as test candidates and flash only with stock recovery rollback ready.
 
 ## Release Policy
 

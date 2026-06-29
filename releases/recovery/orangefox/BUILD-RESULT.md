@@ -1,5 +1,27 @@
 # OrangeFox Build Result
 
+GitHub Actions `orangefox-nx809j-latest` public build, 2026-06-17:
+
+- Build: PASS.
+- Workflow run: `27689530126`.
+- Commit: `d7efe234095e1aed8059b7f802e831741aa5f4ad`.
+- Release tag: `orangefox-nx809j-latest`.
+- Public CI mode: Android 16 proprietary prebuilts disabled; AVB recovery key
+  falls back to the AOSP test key when the local RM11 validation key is absent.
+- Artifact SHA-256: `1a73856d6ad04300afdb6fbb7265e368add6908340303ab775d11ac0e5a61263`
+  for both `recovery.img` and `OrangeFox-R12.0-Unofficial-NX809J.img`.
+- Device-side test: flashed to `recovery_a` first while Android was on slot
+  `_b`; rebooting recovery still loaded the existing `recovery_b` TWRP.
+- Device-side test: flashed to `recovery_b`, then `fastboot reboot recovery`.
+- Result: FAIL. Device stalled on the REDMAGIC logo and did not expose ADB
+  recovery or fastboot during the observation window.
+- Classification: public CI build proves compilation and release publication
+  only; it is not a usable recovery candidate until the REDMAGIC-logo stall is
+  fixed.
+- Next correction lane: compare the public CI lane against D2N/local-good
+  recovery inputs, especially Android 16 prebuilts, AVB key/footer metadata,
+  recovery init/fstab differences, and product/runtime markers.
+
 D2N baseline:
 
 - Build: PASS.
